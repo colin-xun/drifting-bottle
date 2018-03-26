@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.moudao</groupId>
-    <artifactId>drift-bottle</artifactId>
+    <artifactId>drifting-bottle</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>drifting-bottle Maven Webapp</name>
@@ -215,7 +215,7 @@
 
     <!-- tomcat插件,统一启动项目 -->
     <build>
-        <finalName>drift-bottle1</finalName>
+        <finalName>drifting-bottle</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>

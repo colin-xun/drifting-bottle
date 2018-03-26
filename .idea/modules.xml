@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/drift-bottle.iml" filepath="$PROJECT_DIR$/drift-bottle.iml" />
       <module fileurl="file://$PROJECT_DIR$/drift-bottle1.iml" filepath="$PROJECT_DIR$/drift-bottle1.iml" />
     </modules>
   </component>
