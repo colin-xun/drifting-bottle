@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	
+	<!--配置shiro过滤器工厂  -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		
+		<!--注入安全管理器  -->
+		<property name="securityManager" ref="securityManager"></property>
+		<!-- 
+			  private String loginUrl;
+  			  private String successUrl;
+    		private String unauthorizedUrl;
+		 -->
+		 <property name="loginUrl" value="/jsp/login.jsp"></property>
+		 <property name="successUrl" value="/jsp/index.jsp"></property>
+		 <property name="unauthorizedUrl" value="/unauthorized.jsp"></property>
+		 
+		 <!-- url拦截，过滤器链 授权 
+		 shiro框架提供一些过滤器  过滤请求
+		 authc:完成认证才能请求
+		 -->
+		 <property name="filterChainDefinitions" >
+		 	<value>
+		 	 /css/** = anon
+		 	/js/** =anon
+		 	/image/** = anon
+		 	/login=anon
+		 	/index=anon
+		 	/**=anon
+		 	<!--/** = authc-->
+		 	</value>
+		 </property>
+	</bean>
+	
+	<!-- 配置安全管理器对象 -->
+	
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<!--注入realm  -->
+		<property name="realm" ref="mobileRealm"></property>
+		<property name="cacheManager" ref="cacheManager"></property>
+	</bean>
+	
+	<bean name="mobileRealm" class="com.moudao.service.impl.RealRealm"></bean>
+	
+	<!--配置ehcache缓存管理  -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml"></property>
+	</bean>
+	
+	<!--开启注解扫描授权 动态代理  jdk  cglib  -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+		<property name="proxyTargetClass" value="true"></property>
+	</bean>
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"></bean>
+	
+	
+
+</beans>

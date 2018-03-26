@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5" metadata-complete="true">
+  <!-- 编码过滤器,解决post乱码 -->
+  <filter>
+    <filter-name>characterEncoding</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- 配置shiro过滤器 -->
+  <filter>
+    <filter-name>shiroFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>shiroFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- 配置spring启动监听器和配置文件 -->
+  <!-- needed for ContextLoaderListener -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <!--
+        1,加载jar包spring配置文件:classpath*:applicationContext-*.xml(效率底下)
+        2,加载classpath下面配置文件:
+     -->
+    <param-value>classpath:applicationContext-*.xml</param-value>
+  </context-param>
+  <!-- Bootstraps the root web application context before servlet initialization -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <!-- 加载springmvc配置文件 -->
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <!-- 伪静态化 -->
+    <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+</web-app>

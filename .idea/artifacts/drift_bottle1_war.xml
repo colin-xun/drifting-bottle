@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="drift-bottle1:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="drift-bottle1.war">
+      <element id="artifact" artifact-name="drift-bottle1:war exploded" />
+    </root>
+  </artifact>
+</component>
