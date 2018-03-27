@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="drifting-bottle:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="drifting-bottle.war">
-      <element id="artifact" artifact-name="drifting-bottle:war exploded" />
-    </root>
-  </artifact>
-</component>
