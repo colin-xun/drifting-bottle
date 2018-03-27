@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="drift-bottle" />
         <module name="drift-bottle1" />
+        <module name="drifting-bottle" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="drift-bottle" target="1.5" />
       <module name="drift-bottle1" target="1.8" />
+      <module name="drifting-bottle" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
