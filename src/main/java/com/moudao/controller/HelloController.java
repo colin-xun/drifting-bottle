@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
+ * 测试controller
  * author: MrWang
  * date: 2018/3/26 23:56
  */
