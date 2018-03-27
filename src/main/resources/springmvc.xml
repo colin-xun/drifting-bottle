@@ -14,10 +14,53 @@
 	<context:component-scan base-package="com.moudao"></context:component-scan>
 	
 	<!-- 注解驱动 -->
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<!-- 配置使用fastjson进行格式化json -->
+			<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="fastJsonConfig" ref="fastJsonConfig"></property>
+				<property name="defaultCharset" ref="charset"></property>
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json</value>
+						<value>application/xml;charset=UTF-8</value>
+					</list>
+				</property>
+				<property name="features">
+					<list>
+						<!-- 默认的意思就是不配置这个属性，配置了就不是默认了 -->
+						<!-- 是否输出值为null的字段 ，默认是false-->
+						<value>WriteMapNullValue</value>
+						<value>WriteNullNumberAsZero</value>
+						<value>WriteNullListAsEmpty</value>
+						<value>WriteNullStringAsEmpty</value>
+						<value>WriteNullBooleanAsFalse</value>
+						<value>WriteDateUseDateFormat</value>
+					</list>
+				</property>
+			</bean>
+			<!-- 消息转换器，控制返回的消息编码 -->
+			<!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg ref="charset"></constructor-arg>
+			</bean>-->
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 	<!-- 引入静态资源 -->
 	<mvc:default-servlet-handler/>
-	
+	<!-- 配置使用fastjson -->
+	<bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
+		<property name="serializerFeatures" ref="prettyFormat"></property>
+	</bean>
+	<!-- 注入fastjson需要的枚举 -->
+	<bean id="prettyFormat" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+		<property name="staticField" value="com.alibaba.fastjson.serializer.SerializerFeature.PrettyFormat" />
+	</bean>
+	<!-- 定义fastjson需要的字符集 -->
+	<bean id="charset" class="java.nio.charset.Charset" factory-method="forName">
+		<constructor-arg value="utf-8"/>
+	</bean>
+
 	<!-- 配置视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
@@ -31,5 +74,8 @@
 		<!-- 指定文件上传大小 -->
 		<property name="maxUploadSize" value="10240000"></property>
 	</bean>
+
+	<!-- 配置全局异常解析器 -->
+	<bean class="com.moudao.exception.GlobalExceptionResolver"></bean>
 
 </beans>

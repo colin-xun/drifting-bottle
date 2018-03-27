@@ -55,7 +55,6 @@
 
   <servlet-mapping>
     <servlet-name>springmvc</servlet-name>
-    <!-- 伪静态化 -->
-    <url-pattern>*.html</url-pattern>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
 </web-app>

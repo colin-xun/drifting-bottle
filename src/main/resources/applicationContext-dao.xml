@@ -40,6 +40,7 @@
 		<property name="typeAliasesPackage" value="com.moudao.pojo"></property>
 		<!-- 加载mybatis核心配置文件 -->
 		<property name="configLocation" value="classpath:sqlMapConfig.xml"></property>
+		<property name="mapperLocations" value="classpath:mappers/*.xml"></property>
 	</bean>
 	
 	<!-- 批量扫描接口 -->
