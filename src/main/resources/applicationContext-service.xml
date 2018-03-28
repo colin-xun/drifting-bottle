@@ -49,9 +49,9 @@
 	<!-- 配置触发器 -->
 	<bean id="cleanChanceTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="cleanChanceDetail"></property>
-		<property name="cronExpression" value="0 0 0 * * ? "></property>
-		<!-- 为防止开始的时候由于零时的差错，导致没有清理掉昨天的，延迟1分钟启动 -->
-		<property name="startDelay" value="60000"></property>
+		<property name="cronExpression" value="59 59 23 * * ? "></property>
+		<!-- 尽可能到这一天的最后一刻进行清除任务的执行-->
+		<property name="startDelay" value="999"></property>
 	</bean>
 	<!-- 配置调度工长 -->
 	<bean id = "schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
