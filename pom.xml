@@ -31,6 +31,7 @@
         <shiro.version>1.2.2</shiro.version>
         <ehcache.version>2.6.11</ehcache.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <validation.validation>2.0.0.Final</validation.validation>
     </properties>
 
     <dependencies>
@@ -146,6 +147,33 @@
             <version>${jsp-api.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- 校验包 -->
+        <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${validation.validation}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.8.Final</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>javax.el</groupId>-->
+            <!--<artifactId>javax.el-api</artifactId>-->
+            <!--<version>3.0.0</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.1-b08</version>
+        </dependency>-->
+
+
 
         <!-- fastjson工具类 -->
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->

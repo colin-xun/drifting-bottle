@@ -95,6 +95,21 @@
     from bottle
     where bottle_id = #{bottleId,jdbcType=INTEGER}
   </select>
+
+  <select id="selectMaxId" resultType="java.lang.Integer">
+    select MAX(bottle_id) from bottle
+  </select>
+  <select id="selectMinId" resultType="java.lang.Integer">
+    select MIN(bottle_id) from bottle
+  </select>
+  <!-- 多表联查查询用户的拥有的捞瓶子的列表 -->
+  <select id="selectRefloatList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM b_user_bottle ub,bottle b
+    WHERE ub.bottle_id = b.bottle_id AND ub.user_id = #{userId,jdbcType=INTEGER}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from bottle
     where bottle_id = #{bottleId,jdbcType=INTEGER}
@@ -115,7 +130,7 @@
       #{praiseNum,jdbcType=INTEGER}, #{activeStatus,jdbcType=TINYINT}, #{createdTime,jdbcType=TIMESTAMP}, 
       #{updatedTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.moudao.pojo.Bottle" >
+  <insert id="insertSelective" parameterType="com.moudao.pojo.Bottle" useGeneratedKeys="true" keyProperty="bottleId" keyColumn="bottleId" >
     insert into bottle
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="bottleId != null" >
@@ -188,6 +203,9 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+
+
   <update id="updateByExampleSelective" parameterType="map" >
     update bottle
     <set >

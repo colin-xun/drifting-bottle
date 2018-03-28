@@ -12,9 +12,35 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 	<!-- 一 把controller交给springmvc管理 -->
 	<context:component-scan base-package="com.moudao"></context:component-scan>
-	
+
+
+	<!-- validated 校验配置start -->
+	<!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" >-->
+		<!-- 提供检验机制的类： 此处用的而是Hibernate校验器，但是跟Hibernate没有关系 -->
+		<!--<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />-->
+		<!-- 指定校验的使用的资源文件, 如果不需要额外的错误配置文件，就不用配置该属性，
+         在配置文件中配置k-v的错误提示信息，如果不指定则使用默认配置：classpath下的ValidationMessages.properties -->
+		<!--<property name="validationMessageSource" ref="messoreSources" />-->
+	<!--</bean>-->
+	<!--<span style="color:#ff0000;"> 额外错误信息文件配置</span> -->
+	<!--<bean id="messoreSources" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+		<!--&lt;!&ndash;         错误信息资源文件， 不需要写后缀， 默认后缀为.properties &ndash;&gt;-->
+		<!--<property name="basenames">-->
+			<!--<list>-->
+				<!--<value>classpath:testErrMessages</value>-->
+			<!--</list>-->
+		<!--</property>-->
+		<!--&lt;!&ndash;         错误信息文件编码方式 &ndash;&gt;-->
+		<!--<property name="fileEncodings" value="utf-8" />-->
+		<!--&lt;!&ndash;         错误信息文件缓存时间 &ndash;&gt;-->
+		<!--<property name="cacheSeconds" value="120" />-->
+	<!--</bean>-->
+	<!-- validated 校验配置end  -->
+
+
 	<!-- 注解驱动 -->
-	<mvc:annotation-driven>
+	<!--<mvc:annotation-driven validator="validator">-->
+	<mvc:annotation-driven >
 		<mvc:message-converters register-defaults="true">
 			<!-- 配置使用fastjson进行格式化json -->
 			<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">

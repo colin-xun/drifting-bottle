@@ -92,6 +92,20 @@
     from chance
     where chance_id = #{chanceId,jdbcType=INTEGER}
   </select>
+
+  <select id="getThrowChanceByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from chance
+    where user_id = #{userId,jdbcType=INTEGER} and chance_category = 1 and created_time >= DATE(NOW())
+  </select>
+  <select id="getRefloatByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from chance
+    where user_id = #{userId,jdbcType=INTEGER} and chance_category = 0 and created_time >= DATE(NOW())
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from chance
     where chance_id = #{chanceId,jdbcType=INTEGER}
@@ -102,6 +116,16 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+
+  <!-- 批量删除 -->
+  <delete id="deleteBatch" parameterType="java.util.List">
+    delete from chance
+    where chance_id IN
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item.chance_id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+
   <insert id="insert" parameterType="com.moudao.pojo.Chance" >
     insert into chance (chance_id, chance_num, chance_category, 
       user_id, ext1, ext2, 
@@ -111,6 +135,9 @@
       #{createdTime,jdbcType=TIMESTAMP}, #{updatedTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.moudao.pojo.Chance" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="chanceId">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into chance
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="chanceId != null" >
@@ -255,4 +282,8 @@
       updated_time = #{updatedTime,jdbcType=TIMESTAMP}
     where chance_id = #{chanceId,jdbcType=INTEGER}
   </update>
+
+  <delete id="clearAll">
+    TRUNCATE TABLE chance
+  </delete>
 </mapper>
