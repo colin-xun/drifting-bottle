@@ -105,7 +105,8 @@
   <!-- 多表联查查询用户的拥有的捞瓶子的列表 -->
   <select id="selectRefloatList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     SELECT
-    <include refid="Base_Column_List" />
+    b.bottle_id, b.bottle_title, b.bottle_content, b.bottle_category, b.bottle_status, b.create_user_id,
+    b.praise_num, b.active_status, b.created_time, b.updated_time
     FROM b_user_bottle ub,bottle b
     WHERE ub.bottle_id = b.bottle_id AND ub.user_id = #{userId,jdbcType=INTEGER}
   </select>

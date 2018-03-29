@@ -1,6 +1,7 @@
 package com.moudao.service;
 
 import com.moudao.pojo.BComment;
+import com.moudao.util.Result;
 
 import java.util.List;
 
@@ -13,4 +14,9 @@ public interface CommentService {
      * commentCommon:查找范围，0：一般评论，1：优选评论,为null时表示 查找所有的
      */
     List<BComment> selectComment(Integer bottleId, Byte commentCommon);
+
+    Result insert(BComment comment);
+
+
+    Result getCommentListByBottleId(Integer bottleId, Byte commentStatus, Integer page, Integer pageSize);
 }

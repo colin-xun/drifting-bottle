@@ -13,7 +13,6 @@
 	<!-- 一 把controller交给springmvc管理 -->
 	<context:component-scan base-package="com.moudao"></context:component-scan>
 
-
 	<!-- validated 校验配置start -->
 	<!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" >-->
 		<!-- 提供检验机制的类： 此处用的而是Hibernate校验器，但是跟Hibernate没有关系 -->
@@ -37,12 +36,23 @@
 	<!--</bean>-->
 	<!-- validated 校验配置end  -->
 
+	<!-- 配置两种时间参数格式的接受转换器 -->
+	<bean id = "dateConvert" class="com.moudao.convert.DateConvert"></bean>
+	<!--<bean  id = "dataConvert2" class="com.moudao.convert.DateConvert2"></bean>-->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<ref bean="dateConvert"/>
+				<!--<ref bean="dataConvert2"/>-->
+			</set>
+		</property>
+	</bean>
 
 	<!-- 注解驱动 -->
 	<!--<mvc:annotation-driven validator="validator">-->
-	<mvc:annotation-driven >
+	<mvc:annotation-driven conversion-service="conversionService">
 		<mvc:message-converters register-defaults="true">
-			<!-- 配置使用fastjson进行格式化json -->
+			<!-- 配置默认使用fastjson进行格式化json -->
 			<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
 				<property name="fastJsonConfig" ref="fastJsonConfig"></property>
 				<property name="defaultCharset" ref="charset"></property>
@@ -62,6 +72,7 @@
 						<value>WriteNullListAsEmpty</value>
 						<value>WriteNullStringAsEmpty</value>
 						<value>WriteNullBooleanAsFalse</value>
+						<!-- 日期转换的默认格式化器 -->
 						<value>WriteDateUseDateFormat</value>
 					</list>
 				</property>

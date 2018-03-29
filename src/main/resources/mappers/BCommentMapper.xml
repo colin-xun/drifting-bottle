@@ -288,4 +288,12 @@
       updated_time = #{updatedTime,jdbcType=TIMESTAMP}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectGoodByPraise" resultMap="BaseResultMap">
+    SELECT * FROM b_comment WHERE comment_status = 1 ORDER BY parise_num DESC LIMIT 0,1
+  </select>
+
+  <select id="selectCommonByCreatedTime" resultMap="BaseResultMap">
+    SELECT * FROM b_comment WHERE comment_status = 0 ORDER BY created_time DESC LIMIT 0,1
+  </select>
 </mapper>

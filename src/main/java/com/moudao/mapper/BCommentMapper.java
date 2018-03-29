@@ -3,6 +3,7 @@ package com.moudao.mapper;
 import com.moudao.pojo.BComment;
 import com.moudao.pojo.BCommentExample;
 import java.util.List;
+import com.moudao.pojo.PraiseExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface BCommentMapper {
@@ -27,4 +28,8 @@ public interface BCommentMapper {
     int updateByPrimaryKeySelective(BComment record);
 
     int updateByPrimaryKey(BComment record);
+
+    List<BComment> selectGoodByPraise();
+
+    List<BComment> selectCommonByCreatedTime();
 }

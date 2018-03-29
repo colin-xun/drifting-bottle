@@ -5,8 +5,8 @@ package com.moudao.util;
  * date: 2018/3/29 0:29
  */
 public class ChanceBean {
-    private int refloatNum;  //捞瓶子的数量
-    private int throwNum;  //扔的数量
+    private int refloatNum;  //捞瓶子机会的数量
+    private int throwNum;  //扔的机会数量
     private int refloatListNum; //用户的已经捞出的瓶子的数量
     private int throwListNum;   //用户的已经扔出的瓶子的数量
 
