@@ -38,12 +38,10 @@
 
 	<!-- 配置两种时间参数格式的接受转换器 -->
 	<bean id = "dateConvert" class="com.moudao.convert.DateConvert"></bean>
-	<!--<bean  id = "dataConvert2" class="com.moudao.convert.DateConvert2"></bean>-->
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<set>
 				<ref bean="dateConvert"/>
-				<!--<ref bean="dataConvert2"/>-->
 			</set>
 		</property>
 	</bean>
