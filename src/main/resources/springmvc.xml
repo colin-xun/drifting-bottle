@@ -87,7 +87,7 @@
 	<bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
 		<property name="serializerFeatures" ref="prettyFormat"></property>
 	</bean>
-	<!-- 注入fastjson需要的枚举 -->
+	<!-- 注入fastjson需要的枚举,或者直接在fastjson的消息转换器中的features属性中进行设置 -->
 	<bean id="prettyFormat" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
 		<property name="staticField" value="com.alibaba.fastjson.serializer.SerializerFeature.PrettyFormat" />
 	</bean>

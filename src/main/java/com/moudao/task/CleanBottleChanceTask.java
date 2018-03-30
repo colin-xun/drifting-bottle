@@ -7,6 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public class CleanBottleChanceTask {
     private static final int RETRY_NUM = 10;
 
     public void cleanBottle() {
+        log.info("定时任务执行了，时间是：" + new Date());
         chanceMapper.clearAll();
     }
 }
