@@ -1,0 +1,136 @@
+@CHARSET "UTF-8";
+form{
+	margin: 0
+}
+
+body{
+	scrollbar-face-color:#B6DAFE;
+	scrollbar-highlight-color:#E0EFFE;
+	scrollbar-shadow-color:#FFFFFF;
+	scrollbar-3dlight-color:#000000;
+	scrollbar-arrow-color:#3366FF;
+	scrollbar-track-color:#FDEAC4;
+	scrollbar-darkshadow-color:#FFFF00;
+	
+	
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	
+	font-size: 12px;
+	font-family: "宋体";
+	color:#215E88;
+}
+.font1{
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.font1_red{
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.font2{
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.pageLabel{
+	font-size: 12px;
+	color:#215E88;
+	text-decoration: none;
+}
+
+.inputLabelPic{
+	width:7px;
+	height: 15px;
+	background-image: url(../images/first_09.gif)
+}
+
+input{
+	border-bottom-color: #F5FCFE;
+	height: 20px;
+	border: 1px solid #7F9DB9;
+	width: auto;
+	font-size: 12px;
+	font-family: "宋体";
+	color:#333333;
+}
+.record_even{
+	background-color: #FFA54A;
+	font-size: 12px;
+	/* height:24PX; */
+	color:#FFFFFF;
+	font-family: "宋体";
+}
+td{
+	font-size: 12px;
+	color:#215E88;
+}
+legent{
+	font-size: 12px;
+	color:#215E88;
+}
+.record_odd{
+	font-size: 12px;
+	background-color: #FBFBF0;
+	color: #215F88;
+	height: 24PX;
+	font-family: "宋体";
+}
+
+.btnlarge{
+	border: none;
+	background:url(../images/btn_large.gif) repeat 0 #e1dbd0;
+	padding: 2px 0 0 0px;
+	width: 100px;
+	height: 22px;
+	color: #2A2A2A;
+	cursor: pointer;
+}
+.table{
+	background-color: #3187B0;
+	border:0;
+	align:center;
+	font-size: 12px;
+	color: #215F88;
+	line-height: 18px;
+	font-family: "宋体";
+	text-decoration: none;
+}
+.labeltext{
+	font-size: 12px;
+	color:#215E88;
+	padding-left: 100px;
+}
+fieldset{
+	margin-top: 6px;
+	margin-bottom: 6px;
+	padding-top: 3px;
+}
+.btnmiddle{
+	border:none;
+	background:url(../images/btn_middle.gif) repeat 0 #e1db0;
+	padding:2px 0 0 0px;
+	width:70px;
+	height:22px;
+	color:#2A2A2A;
+	cursor:pointer;
+}
+textarea{
+	background-color:#F5FCFE;
+	border:1px solid #7F9DB9;
+	font-size: 12px;
+	font-family: 宋体;
+	color:#333333;
+	resize: none;
+}
+.FontTitle{
+	font-size: 14px;
+	color: #111111;
+	font-family: "宋体";
+	font-weight: bold;
+}

@@ -27,4 +27,12 @@ public interface BUserMapper {
     int updateByPrimaryKeySelective(BUser record);
 
     int updateByPrimaryKey(BUser record);
+    
+    /**
+     * 根据条件查询
+     * @param buser
+     * @return
+     * 2018年3月29日
+     */
+	List<BUser> findList_Page_BUser(BUser buser);
 }

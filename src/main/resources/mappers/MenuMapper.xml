@@ -273,4 +273,19 @@
       updated_time = #{updatedTime,jdbcType=TIMESTAMP}
     where menu_id = #{menuId,jdbcType=INTEGER}
   </update>
+  
+    <select id="findListMenuByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		SELECT 
+		  m.* 
+		FROM
+		  b_user u,
+		  role r,
+		  role_menu rm,
+		  menu m 
+		WHERE u.role_id = r.role_id
+		  AND r.role_id = rm.role_id
+		  AND rm.menu_id = m.menu_id 
+		  AND u.user_id = #{userId,jdbcType=INTEGER}
+  
+  </select>
 </mapper>

@@ -27,4 +27,11 @@ public interface MenuMapper {
     int updateByPrimaryKeySelective(Menu record);
 
     int updateByPrimaryKey(Menu record);
+    /**
+     * 根据用户进行多表联查
+     * @param id
+     * @return
+     * 2018年3月28日
+     */
+	List<Menu> findListMenuByUserId(Integer userId);
 }
