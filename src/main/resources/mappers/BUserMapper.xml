@@ -394,16 +394,16 @@
  		b_user b,
   		role r
 	WHERE b.role_id = r.role_id 
-	<if test="nickname != null">
-		AND b.nickname = #{nickname,jdbcType=VARCHAR},
+	<if test="nickname != null and nickname !='' ">
+		AND b.nickname = #{nickname,jdbcType=VARCHAR}
 	</if>
-	<if test="nickname != null">
-		AND b.identity =#{identity,jdbcType=TINYINT},
+	<if test="identity != null and identity !='' ">
+		AND b.identity =#{identity,jdbcType=TINYINT}
 	</if>
-	<if test="nickname != null">
-		AND b.department =#{department,jdbcType=VARCHAR},
+	<if test="department != null and department !='' ">
+		AND b.department =#{department,jdbcType=VARCHAR}
 	</if>
-	<if test="nickname != null">
+	<if test="sex != null and sex !='' ">
 		AND b.sex =#{sex,jdbcType=TINYINT}
 	</if>
    

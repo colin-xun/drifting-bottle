@@ -81,5 +81,42 @@ public class UserServiceImpl implements UserService{
 		return d;
 		
 	}
+	/**
+	 * 新增用户
+	 * @param bUser
+	 * 2018年3月30日
+	 */
+	public void saveUser(BUser bUser) {
+		bUser.setBirthday(new Date());
+		bUser.setCreatedTime(new Date());
+		bUser.setExt1("0");
+		bUser.setExt2("0");
+		bUser.setRealTime(bUser.getNickname());
+		bUser.setUpdatedTime(new Date());
+		bUser.setIntegral(0);
+		bUserMapper.insert(bUser);
+	}
+	/**
+	 * 根据id删除用户
+	 * @param ids
+	 * @return
+	 * 2018年3月30日
+	 */
+	public void deleterUserById(String id) {
+			bUserMapper.deleteByPrimaryKey(Integer.parseInt(id));
+	}
+	/**
+	 * 修改用户信息
+	 * @param buser
+	 * @return
+	 * 2018年3月30日
+	 */
+	public void updateBUser(BUser buser) {
+		buser.setUpdatedTime(new Date());
+		buser.setRealTime(buser.getNickname());
+		buser.setBirthday(new Date());
+		buser.setExt1("0");
+		bUserMapper.updateByPrimaryKeySelective(buser);
+	}
 
 }

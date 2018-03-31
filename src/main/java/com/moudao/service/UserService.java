@@ -35,5 +35,25 @@ public interface UserService {
 	 * 2018年3月29日
 	 */
 	DataGridPageBean findList_Page_BUser(BUser buser, Integer page, Integer rows);
+	/**
+	 * 新增用户
+	 * @param bUser
+	 * 2018年3月30日
+	 */
+	void saveUser(BUser bUser);
+	/**
+	 * 根据id删除用户
+	 * @param ids
+	 * @return
+	 * 2018年3月30日
+	 */
+	void deleterUserById(String id);
+	/**
+	 * 修改用户信息
+	 * @param buser
+	 * @return
+	 * 2018年3月30日
+	 */
+	void updateBUser(BUser buser);
 
 }

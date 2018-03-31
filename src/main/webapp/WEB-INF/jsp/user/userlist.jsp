@@ -34,12 +34,21 @@
 				toolbar : toolbar,
 				url : "${pageContext.request.contextPath }/user/list_page",
 				idField : 'userId',
-				columns : columns,
-				onDblClickRow : doDblClickRow
+				columns : columns
 			});
 			
 			// 添加取派员窗口
 			$('#addWindow').window({
+		        title: '增加用户',
+		        width: 600,
+		        modal: true,
+		        shadow: true,
+		        closed: true,
+		        height: 300,
+		        resizable:false
+		    });
+			// 添加取派员窗口
+			$('#UpdateWindow').window({
 		        title: '增加用户',
 		        width: 600,
 		        modal: true,
@@ -63,61 +72,34 @@
 				if(rows.length!=1){
 					$.messager.alert("提示","请您选择一条数据！","warning");
 				}else{
-					 $("#courierForm").form("load",rows[0]);
+					 $("#updateForm").form("load",rows[0]);
 					
 					 //获取下拉框中value值
-						$("#standardId").combobox("select",rows[0].standard.id);
-				
-					$('#addWindow').window("open"); 
-					
+					/* $("#standardId").combobox("select",rows[0].standard.id); */
+					$('#UpdateWindow').window("open"); 
 				}
 				
 			}
 			
 			function doDelete(){
-				/* var rows = $("#grid").datagrid("getSelections");
-				
-				if(rows.length==0){
-					$.messager.alert("提示","请您至少选择一个！","warning");
-				}else{
-					$.messager.confirm("提示","您确定删除这些信息吗?",function(r){
-						if(r){
-						var array = new array();
-						for(int i = 0;i<rows.length;i++){
-							array.push(row[i].id);
-						}
-						var ids = array.join(",");
-						window.location.href="../../courierAction_deleteBacth?ids="+ids ;
-						}
-					})
-				} */
-				
+	
 				//判断是否选中记录
 				var rows = $("#grid").datagrid('getSelections');
-				if(rows.length==0){
-					$.messager.alert('提示信息','至少选择一条记录','warning');
+				if(rows.length!=1){
+					$.messager.alert('提示信息','只能选择一条记录','warning');
 				}else{
 					$.messager.confirm('提示信息','确定删除吗？',function(r){
 						if(r){
-							//获取选中记录的id
-		// 					console.info(rows);
-							var array = new Array();
-							for(var i=0;i<rows.length;i++){
-								var id = rows[i].id;
-		// 						var ids += id + ","; 
-								array.push(id);
-							}
-							var ids = array.join(',');  //使用逗号对数组中内容进行拼接，默认就是，
-		// 					alert(ids);
-							//
-							window.location.href="../../courierAction_deleteBacth.action?ids="+ids;
+								var id = rows[0].userId;
+								alert(id);
+							window.location.href="${pageContext.request.contextPath }/user/deleterUserById?id="+id;
 						}
 					})
 				}
 				
 			}
 			
-			function doRestore(){
+			/* function doRestore(){
 				
 				//返回选中数据的数组
 				var rows = $("#grid").datagrid("getSelections");
@@ -147,7 +129,7 @@
 						}
 					})
 				}
-			}
+			} */
 			//工具栏
 			var toolbar = [ {
 				id : 'button-add',	
@@ -159,7 +141,7 @@
 				text : '修改',
 				iconCls : 'icon-edit',
 				handler : doEdit
-			}, {
+			},{
 				id : 'button-delete',
 				text : '作废',
 				iconCls : 'icon-cancel',
@@ -182,13 +164,21 @@
 			},{
 				field : 'nickname',
 				title : '姓名',
-				width : 80,
+				width : 120,
 				align : 'center'
 			},{
-				field : 'sex_String',
+				field : 'sex',
 				title : '性别',
-				width : 80,
-				align : 'center'
+				width : 120,
+				align : 'center',
+				formatter: function(value,row,index){
+					if (row.sex==1){
+						return "女";
+					} else {
+						return "男";
+					}
+				}
+
 			}, {
 				field : 'integral',
 				title : '积分',
@@ -209,20 +199,20 @@
 				title : '身份',
 				width : 120,
 				align : 'center',
-				/* formatter : function(data,row, index){
-					//当返回数据是json对象 使用row代表整个对象，通过对象.对象.对象.对象....属性
-					if(row.standard != null){
-						return row.standard.name;
+				formatter: function(value,row,index){
+					if (row.integral==1){
+						return "学生";
+					} else {
+						return "教师";
 					}
-					return "";
-				} */
+				}
 			}, {
 				field : 'department',
 				title : '院系',
 				width : 120,
 				align : 'center'
 			}, {
-				field : 'updated_time_String',
+				field : 'updatedTime',
 				title : '修改时间',
 				width : 200,
 				align : 'center'
@@ -230,9 +220,7 @@
 			
 		
 		
-			function doDblClickRow(){
-				alert("双击表格数据...");
-			}
+			
 		</script>
 	</head>
 
@@ -240,7 +228,7 @@
 		<div region="center" border="false">
 			<table id="grid"></table>
 		</div>
-		<div class="easyui-window" title="对用户进行添加或者修改" id="addWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
+		<div class="easyui-window" title="新增用户" id="addWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 			<div region="north" style="height:31px;overflow:hidden;" split="false" border="false">
 				<div class="datagrid-toolbar">
 					<a id="save" icon="icon-save" href="#" class="easyui-linkbutton" plain="true">保存</a>
@@ -248,7 +236,7 @@
 			</div>
 
 			<div region="center" style="overflow:auto;padding:5px;" border="false">
-				<form id="courierForm" action="../../courierAction_save.action" method="post">
+				<form id="SaveForm" action="${pageContext.request.contextPath }/user/saveUser" method="post">
 					<table class="table-edit" width="80%" align="center">
 						<tr class="title">
 							<td colspan="4">用户信息</td>
@@ -258,14 +246,11 @@
 							<td>
 								<input type="text" name="nickname" class="easyui-validatebox" required="true" />
 							</td>
-							<td>身份</td>
+							<td>密码	</td>
 							<td>
-								<select id="identity" name="identity" class="easyui-validatebox" required="true">
-									<option value=""></option>
-									<option value="0">教师</option>
-									<option value="1">学生</option>
-								</select>
+								<input type="text" name="password" class="easyui-validatebox" required="true" />
 							</td>
+							
 						</tr>
 						<tr>
 							<td>注册电话</td>
@@ -279,7 +264,7 @@
 									//移动手机号码验证
 								    mobile: {//value值为文本框中的值
 								        validator: function (value) {
-								            var reg = /^1[3|4|5|8|9]\d94}$/;
+								            var reg = /^1[34578]{1}\d{9}$/;
 								            return reg.test(value);
 								        },
 								        message: '输入手机号码格式不准确.'
@@ -287,9 +272,9 @@
 								});  
 								
 								$("#save").click(function(){
-									var r = $("#courierForm").form("validate");
+									var r = $("#SaveForm").form("validate");
 									if(r){
-										$("#courierForm").submit();
+											$("#SaveForm").submit();
 										}
 									});
 								})
@@ -298,10 +283,10 @@
 							</td>
 							<td>性别</td>
 							<td>
-								<select id="sex" name="sex" class="easyui-validatebox" required="true">
-									<option value=""></option>
-									<option value="0">女</option>
-									<option value="1">男</option>
+								<select id="sex" name="sex" class="class="easyui-combobox" required="true" style="width:200px;">
+						
+									<option value="1">女</option>
+									<option value="0">男</option>
 								</select>
 							</td>
 						</tr>
@@ -312,10 +297,113 @@
 							</td>
 							<td>角色</td>
 							<td>
-								<select id="sex" name="roleId" class="easyui-validatebox" required="true">
-									<option value=""></option>
+								<select id="sex" name="roleId" class="easyui-combobox" required="true" style="width:200px;">
 									<option value="1">系统管理员</option>
 									<option value="2">用户</option>
+								</select>
+							</td>
+							
+						</tr>
+						<tr>
+						<td>身份</td>
+							<td>
+								<select id="identity" name="identity" class="easyui-combobox" required="true" style="width:200px;">
+									<option value="0">教师</option>
+									<option value="1">学生</option>
+								</select>
+							</td>
+						</tr>
+						
+					</table>
+				</form>
+			</div>
+		</div>
+		<div class="easyui-window" title="修改用户" id="UpdateWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
+			<div region="north" style="height:31px;overflow:hidden;" split="false" border="false">
+				<div class="datagrid-toolbar">
+					<a id="update" icon="icon-save" href="#" class="easyui-linkbutton" plain="true">保存</a>
+				</div>
+			</div>
+
+			<div region="center" style="overflow:auto;padding:5px;" border="false">
+				<form id="updateForm" action="${pageContext.request.contextPath }/user/updateUser" method="post">
+					<table class="table-edit" width="80%" align="center">
+						<tr class="title">
+							<td colspan="4">用户信息</td>
+						</tr>
+						<tr>
+							<td>用户名</td>
+							<td>
+								<input type="hidden" name="userId" />
+								<input type="hidden" name="realTime" />
+								<input type="hidden" name="integral" />
+								<!-- <input type="hidden" name="birthday" /> -->
+								<input type="text" name="nickname" class="easyui-validatebox" required="true" />
+							</td>
+							<td>密码	</td>
+							<td>
+								<input type="text" name="password" class="easyui-validatebox" required="true" />
+							</td>
+							
+						</tr>
+						<tr>
+							<td>注册电话</td>
+							<td>
+								<input type="text" name="telephone" data-options="validType:'mobile'" class="easyui-validatebox" required="true" />
+								<!-- 校验是否是合法手机号 -->
+								<script type="text/javascript">
+								$(function(){
+									
+								$.extend($.fn.validatebox.defaults.rules, {    
+									//移动手机号码验证
+								    mobile: {//value值为文本框中的值
+								        validator: function (value) {
+								            var reg = /^1[34578]{1}\d{9}$/;
+								            return reg.test(value);
+								        },
+								        message: '输入手机号码格式不准确.'
+								    }
+								});  
+								
+								$("#update").click(function(){
+									var r = $("#updateForm").form("validate");
+									if(r){
+											$("#updateForm").submit();
+										}
+									});
+								})
+
+								</script>
+							</td>
+							<td>性别</td>
+							<td>
+								<select id="sex" name="sex" class="class="easyui-combobox" required="true" style="width:200px;">
+						
+									<option value="1">女</option>
+									<option value="0">男</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>院校</td>
+							<td>
+								<input type="text" name="department" class="easyui-validatebox" required="true" />
+							</td>
+							<td>角色</td>
+							<td>
+								<select id="sex" name="roleId" class="easyui-combobox" required="true" style="width:200px;">
+									<option value="1">系统管理员</option>
+									<option value="2">用户</option>
+								</select>
+							</td>
+							
+						</tr>
+						<tr>
+						<td>身份</td>
+							<td>
+								<select id="identity" name="identity" class="easyui-combobox" required="true" style="width:200px;">
+									<option value="0">教师</option>
+									<option value="1">学生</option>
 								</select>
 							</td>
 						</tr>
@@ -342,17 +430,17 @@
 						<tr>
 							<td>性别</td>
 							<td>
-								<select id="sex" name="sex">
+								<select id="sex" name="sex" class="easyui-combobox" style="width:200px;">
 									<option value=""></option>
-									<option value="0">女</option>
-									<option value="1">男</option>
+									<option value="1">女</option>
+									<option value="0">男</option>
 								</select>
 							</td>
 						</tr>
 						<tr>
 							<td>身份</td>
 							<td>
-								<select id="identity" name="identity">
+								<select id="identity" name="identity" class="easyui-combobox" style="width:200px;">
 									<option value=""></option>
 									<option value="0">教师</option>
 									<option value="1">学生</option>
