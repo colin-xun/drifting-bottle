@@ -1,7 +1,12 @@
 package com.moudao.util;
 
+import com.alibaba.fastjson.JSONObject;
+import com.moudao.pojo.Bottle;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,6 +14,17 @@ import java.util.Map;
  * @param <T>
  */
 public class Result<T> implements Serializable {
+    public static void main(String[] args) {
+        PageInfoResult<Bottle> pageInfo = new PageInfoResult<Bottle>();
+        List<Bottle> list = new ArrayList<>();
+        Bottle bottle = new Bottle();
+        bottle.setBottleTitle("hello");
+        bottle.setPraiseNum(10);
+        list.add(bottle);
+        pageInfo.setItems(list);
+        System.out.println(JSONObject.toJSONString(Result.success(pageInfo,"这是附带的信息")));
+        System.out.println(JSONObject.toJSONString(Result.fail("这是失败时的数据（如果有数据的话）", "这是附带的信息")));
+    }
 
     private static final long serialVersionUID = -4569216979022946969L;
     private T data;//返回数据
