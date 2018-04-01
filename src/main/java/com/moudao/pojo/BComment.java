@@ -37,6 +37,17 @@ public class BComment {
     @Past(groups = {InsertValid.class,UpdateValid.class}, message = "修改时间应该是一个过去的时间")
     private Date updatedTime;
 
+    //这个是用户的名字
+    private String nickname;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     public Integer getCommentId() {
         return commentId;
     }

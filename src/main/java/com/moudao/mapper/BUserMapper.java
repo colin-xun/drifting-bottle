@@ -35,4 +35,11 @@ public interface BUserMapper {
      * 2018年3月29日
      */
 	List<BUser> findList_Page_BUser(BUser buser);
+
+    /**
+     * 根据id列表批量查询用户
+     * @param ids
+     * @return
+     */
+    List<BUser> selectBatchByIds(List<Integer> ids);
 }

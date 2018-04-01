@@ -26,14 +26,14 @@
 					
 					
 					var setting = {
-						data : {
-							simpleData : { // 简单数据 
-								enable : true
-							}
-						},
-						callback : {
-							onClick : onClick
-						}
+                            data : {
+                                simpleData : { // 简单数据
+                                    enable : true
+                                }
+                            },
+                            callback : {
+                                onClick : onClick
+                            }
 					};
 					//首先加载div
 					/* $.post("${pageContext.request.contextPath}/menu_div",function(menu){

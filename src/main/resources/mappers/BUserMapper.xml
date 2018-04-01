@@ -409,4 +409,14 @@
    
 
   </select>
+
+  <select id="selectBatchByIds" parameterType="java.util.List" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from b_user
+    where user_id IN
+    <foreach collection="list" item="id" index="index" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </select>
 </mapper>

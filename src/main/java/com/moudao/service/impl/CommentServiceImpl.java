@@ -13,9 +13,13 @@ import com.moudao.util.PageInfoResult;
 import com.moudao.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.xml.bind.annotation.XmlAccessorOrder;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * author: MrWang
@@ -75,12 +79,36 @@ public class CommentServiceImpl implements CommentService {
             }
             criteria.andCommentStatusEqualTo(commentStatus);
             commets = commentMapper.selectByExample(example);
+            if (!CollectionUtils.isEmpty(commets)) {
+                commets = handleUsername(commets);
+            }
             return getListResult(commets);
         }
         String orderBy = "created_time desc";
         PageHelper.startPage(page, pageSize, orderBy);
         commets = commentMapper.selectByExample(example);
+        if (!CollectionUtils.isEmpty(commets)) {
+            commets = handleUsername(commets);
+        }
         return getListResult(commets);
+    }
+
+    private List<BComment> handleUsername(List<BComment> commets) {
+        List<Integer> ids = new ArrayList<>();
+        for (BComment comment : commets) {
+            ids.add(comment.getUserId());
+        }
+        List<BUser> users = userMapper.selectBatchByIds(ids);
+        Map<Integer, String> cache = new HashMap<>();
+        if (!CollectionUtils.isEmpty(users)){
+            for (BUser user : users) {
+                cache.put(user.getUserId(), user.getNickname());
+            }
+        }
+        for (BComment comment : commets) {
+            comment.setNickname(cache.get(comment.getUserId()));
+        }
+        return commets;
     }
 
     private Result getListResult(List<BComment> commets) {

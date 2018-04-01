@@ -46,6 +46,17 @@ public class Bottle {
     @Past(groups = {InsertValid.class,UpdateValid.class}, message = "修改时间不能大于当前时间")
     private Date updatedTime;
 
+    //创建者id
+    private String nickname;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     public Integer getBottleId() {
         return bottleId;
     }

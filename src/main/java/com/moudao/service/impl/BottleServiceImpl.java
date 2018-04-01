@@ -3,6 +3,7 @@ package com.moudao.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.moudao.mapper.BUserBottleMapper;
+import com.moudao.mapper.BUserMapper;
 import com.moudao.mapper.BottleMapper;
 import com.moudao.pojo.*;
 import com.moudao.service.BottleService;
@@ -31,6 +32,9 @@ public class BottleServiceImpl implements BottleService {
 
     @Autowired
     private ChanceService chanceService;
+
+    @Autowired
+    private BUserMapper userMapper;
 
     @Override
     public Result insert(Bottle bottle) {
@@ -97,6 +101,10 @@ public class BottleServiceImpl implements BottleService {
         userBottle.setBottleId(bottle.getBottleId());
         userBottle.setUserId(userId);
         bUserBottleMapper.insertSelective(userBottle);
+        BUser bUser = userMapper.selectByPrimaryKey(userId);
+        if (bUser != null) {
+            bottle.setNickname(bUser.getNickname());
+        }
         return Result.success(bottle, "恭喜您捞到一个瓶子");
     }
 
@@ -116,7 +124,12 @@ public class BottleServiceImpl implements BottleService {
 
     @Override
     public Bottle getByBottleId(Integer bottleId) {
-        return bottleMapper.selectByPrimaryKey(bottleId);
+        Bottle bottle = bottleMapper.selectByPrimaryKey(bottleId);
+        if (bottle != null) {
+            BUser bUser = userMapper.selectByPrimaryKey(bottle.getCreateUserId());
+            bottle.setNickname(bottle.getNickname());
+        }
+        return bottle;
     }
 
     @Override
