@@ -44,7 +44,7 @@
                 /login=anon
                 /index=anon
                 /changeCode = anon   <!-- 放开验证码路径的访问权限 -->
-                <!--/** = authc-->
+                /** = authc
             </value>
         </property>
     </bean>

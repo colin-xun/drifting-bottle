@@ -131,7 +131,7 @@ public class BottleServiceImpl implements BottleService {
         Bottle bottle = bottleMapper.selectByPrimaryKey(bottleId);
         if (bottle != null) {
             BUser bUser = userMapper.selectByPrimaryKey(bottle.getCreateUserId());
-            bottle.setNickname(bottle.getNickname());
+            bottle.setNickname(bUser.getNickname());
         }
         return bottle;
     }
