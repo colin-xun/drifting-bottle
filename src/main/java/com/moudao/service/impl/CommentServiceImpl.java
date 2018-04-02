@@ -42,11 +42,11 @@ public class CommentServiceImpl implements CommentService {
             criteria.andCommentStatusEqualTo(commentCommon);
             if (Constant.COMMENT_GOOD == commentCommon.byteValue()) {
                 //优质评论按赞数进行逆序排序,返回前3条
-                List<BComment> bComments = commentMapper.selectGoodByPraise();
+                List<BComment> bComments = commentMapper.selectGoodByPraise(bottleId);
                 return bComments;
             } else {
                 //一般评论按时间进行逆序排序,返回前3条
-                List<BComment> bComments = commentMapper.selectCommonByCreatedTime();
+                List<BComment> bComments = commentMapper.selectCommonByCreatedTime(bottleId);
                 return bComments;
             }
         }

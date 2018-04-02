@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>错误提示</title>
 </head>
 <body>
     <h2>发生错误，错误信息：${message}</h2>

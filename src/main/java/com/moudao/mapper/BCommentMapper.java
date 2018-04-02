@@ -29,7 +29,7 @@ public interface BCommentMapper {
 
     int updateByPrimaryKey(BComment record);
 
-    List<BComment> selectGoodByPraise();
+    List<BComment> selectGoodByPraise(Integer bottleId);
 
-    List<BComment> selectCommonByCreatedTime();
+    List<BComment> selectCommonByCreatedTime(Integer bottleId);
 }
