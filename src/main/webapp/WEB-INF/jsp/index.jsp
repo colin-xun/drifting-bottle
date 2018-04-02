@@ -237,7 +237,7 @@
 					<tr>
 						<td style="width: 400px;">
 							<div style="color: #999; font-size: 8pt;">
-							 	BOSv2.0综合物流管理平台 | Powered by <a href="http://www.baidu.com">校园</a>
+							 	校园漂流瓶
 							</div>
 						</td>
 						<!--<td style="width: *;" class="co1"><span id="online" style="background: url(./images/online.png) no-repeat left;padding-left:18px;margin-left:3px;font-size:8pt;color:#005590;">在线人数:1</span>-->

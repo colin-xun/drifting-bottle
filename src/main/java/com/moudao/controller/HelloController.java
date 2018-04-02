@@ -46,4 +46,9 @@ public class HelloController {
     public String hello4() {
         return "new";
     }
+
+    @RequestMapping(value = "/collect", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    public String hello5() {
+        return "collect";
+    }
 }
