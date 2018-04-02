@@ -86,6 +86,10 @@ public class BottleServiceImpl implements BottleService {
             //这说明捞到了一个已经被删除的瓶子
             return Result.fail("太好运了，您捞到了一个螃蟹，回去做一个大闸蟹吧！");
         }
+        if (bottle.getCreateUserId().equals(userId)) {
+            //这说明捞到的是用户创建的瓶子
+            return Result.fail("恭喜您，您捞到一双破鞋!");
+        }
         BUserBottleExample example = new BUserBottleExample();
         BUserBottleExample.Criteria criteria = example.createCriteria();
         criteria.andUserIdEqualTo(userId);
