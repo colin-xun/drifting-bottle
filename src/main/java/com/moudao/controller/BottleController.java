@@ -119,7 +119,7 @@ public class BottleController {
      * @param userId
      * @return
      */
-    @RequestMapping(value = "/delete/{bottleId}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/delete/{bottleId}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Result deleteBottleByUser(@PathVariable(value = "bottleId", required = true) Integer bottleId, @RequestParam(value = "userId", required = true) Integer userId) {
         try {
