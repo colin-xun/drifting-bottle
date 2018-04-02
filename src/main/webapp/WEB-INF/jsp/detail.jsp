@@ -64,43 +64,37 @@
             <div class="fly-panel detail-box">
                 <h1> 问题内容 </h1>
                 <div class="detail-about">
-                    <div>亚索</div>
-                    <div>2017-09-23</div>
-                    <div class="detail-hits" data-id="{{rows.id}}">
-                        <span class="layui-btn layui-btn-mini jie-admin" type="collect" data-type="add"> <a id="collectPost" onclick="support('0')"> 点赞此问题 </a> </span>
-                    </div>
                 </div>
                 <div class="detail-body photos" id="detail-content" style="margin-bottom: 20px;">
-                    <p> 帖子内容 </p>
                 </div>
             </div>
             <div class="fly-panel detail-box" style="padding-top: 0;">
                 <a name="comment"> </a>
                 <ul class="jieda photos" id="jieda">
-                    <li data-id="12" class="jieda-daan"> <a name="item-121212121212"> </a>
-                        <div class="detail-about detail-about-reply">
-                            <div>纸飞机</div>
-                            <div>3分钟前</div>
-                            <i class="iconfont ic on-caina" title="最佳答案"> </i>
-                        </div>
-                        <div class="detail-body jieda-body">
-                            <p> 么么哒 </p>
-                        </div>
-                        <div class="jieda-reply">
-                            <span class="jieda-zan zanok" type="zan"> <i class="iconfont icon-zan"> </i> <em> 12 </em> </span>
-                        </div> </li>
-                    <li data-id="13"> <a name="item-121212121212"> </a>
-                        <div class="detail-about detail-about-reply">
-                            <div>香菇</div>
-                            <div>asdfsa</div>
-                        </div>
-                        <div class="detail-body jieda-body">
-                            <p> 蓝瘦 </p>
-                        </div>
-                        <div class="jieda-reply">
-                            <span class="jieda-zan" type="zan"> <i class="iconfont icon-zan"> </i> <em> 0 </em> </span>
-                        </div>
-                    </li>
+                    <%--<li data-id="12" class="jieda-daan"> <a name="item-121212121212"> </a>--%>
+                        <%--<div class="detail-about detail-about-reply">--%>
+                            <%--<div>纸飞机</div>--%>
+                            <%--<div>3分钟前</div>--%>
+                            <%--<i class="iconfont ic on-caina" title="最佳答案"> </i>--%>
+                        <%--</div>--%>
+                        <%--<div class="detail-body jieda-body">--%>
+                            <%--<p> 么么哒 </p>--%>
+                        <%--</div>--%>
+                        <%--<div class="jieda-reply">--%>
+                            <%--<span class="jieda-zan zanok" type="zan"> <i class="iconfont icon-zan"> </i> <em> 12 </em> </span>--%>
+                        <%--</div> </li>--%>
+                    <%--<li data-id="13"> <a name="item-121212121212"> </a>--%>
+                        <%--<div class="detail-about detail-about-reply">--%>
+                            <%--<div>香菇</div>--%>
+                            <%--<div>asdfsa</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="detail-body jieda-body">--%>
+                            <%--<p> 蓝瘦 </p>--%>
+                        <%--</div>--%>
+                        <%--<div class="jieda-reply">--%>
+                            <%--<span class="jieda-zan" type="zan"> <i class="iconfont icon-zan"> </i> <em> 0 </em> </span>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
                     <!-- <li class="fly-none">没有任何回答</li> -->
                 </ul>
 

@@ -29,25 +29,24 @@
 
     <script type="text/javascript">
         function support(type) {
-            var userId = $("#user-id").val();
-            var bottleId = $("#bottle-id").val();
+            var userId = $("#userId").val();
+            var bottleId = $("#bottleId").val();
             var url = $.getRootApi() +"praise/create/"+bottleId;
             $.ajax({
-              type : "POST", //提交方式
-              url : url,//路径
-              data : {
-                  "userId" : userId,
-                  "catetory" : type
-              },//数据，这里使用的是Json格式进行传输
-              success : function(data) {//返回数据根据结果进行相应的处理
-                  if (data.isSuccess){
-                      // console.log(data)
-                      alert("成功点赞！")
-                  } else {
-                      alert(data.resultMsg);
-                  }
-              }
-          });
+                type : "POST", //提交方式
+                url : url,//路径
+                data : {
+                    "userId" : userId,
+                    "catetory" : type
+                },//数据，这里使用的是Json格式进行传输
+                success : function(data) {//返回数据根据结果进行相应的处理
+                    if (data.isSuccess){
+                        alert("成功点赞！")
+                    } else {
+                        alert(data.resultMsg);
+                    }
+                }
+            });
         }
 
         function submitForm(){
@@ -67,10 +66,6 @@
 <body>
 <div class="main layui-clear">
     <div class="wrap">
-
-        <input type="hidden" id="bottle-id" name="bottle-id" value="value">
-        <input type="hidden" id="user-id" name="user-id" value=${USER_SESSION.userId}>
-        <input type="hidden" id="url-prefix" name="url-prefix" value=${pageContext.request.contextPath}>
 
         <div class="content detail">
             <div class="fly-panel detail-box">
@@ -112,7 +107,7 @@
                 </ul>
 
                 <div class="layui-form layui-form-pane">
-                    <form id="addBottleForm" name="addBottleForm" method="post">
+                    <form id="addBottleForm" name="addBottleForm" method="post" action="${pageContext.request.contextPath }/comment/create">
                         <%--创建人ID--%>
                         <input type="hidden" id="userId" name="userId" value=${USER_SESSION.userId}>
                         <%--瓶子ID--%>

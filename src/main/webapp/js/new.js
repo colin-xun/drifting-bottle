@@ -80,7 +80,7 @@ function getUserById(userId) {
 }
 
 function addOk(commentId) {
-    var userId = $("#user-id").val();
+    var userId = $("#userId").val();
     var url = $.getRootApi() +"praise/create/"+commentId;
 
     $.ajax({
@@ -101,3 +101,4 @@ function addOk(commentId) {
         }
     });
 }
+

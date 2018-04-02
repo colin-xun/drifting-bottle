@@ -62,9 +62,10 @@ function toPage() {
         laypage.render({
             elem: 'demo1'
             ,count: totalCount //数据总数
-            ,limits: pageSize
+            ,limit: pageSize
             ,jump: function(obj){
                 pageIndex = obj.curr;
+                pageSize = obj.limit;
                 getBottles(type);
             }
         });
