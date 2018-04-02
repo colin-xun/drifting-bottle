@@ -69,7 +69,6 @@ public class UserController {
 	 */
 	@RequestMapping("/index")
 	public String login(){
-		System.out.println("访问了index请求");
 		return "login";
 	}
 	
