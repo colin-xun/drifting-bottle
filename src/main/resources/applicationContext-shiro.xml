@@ -43,7 +43,8 @@
                 /image/** = anon
                 /login=anon
                 /index=anon
-                <!--/** = authc-->
+                /changeCode = anon   <!-- 放开验证码路径的访问权限 -->
+                /** = authc
             </value>
         </property>
     </bean>
