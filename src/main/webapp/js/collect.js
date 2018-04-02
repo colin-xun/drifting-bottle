@@ -77,15 +77,15 @@ function plot() {
             type: 'pie',
             name: '浏览器访问量占比',
             data: [
-                ['普通瓶子',   10],
-                ['普通评论',       10],
+                ['普通作业求解瓶',   10],
+                ['普通知识问答瓶',       10],
                 {
-                    name: '优质评论',
+                    name: '优质作业求解瓶',
                     y: 10,
                     sliced: true,
                     selected: true
                 },
-                ['优质瓶子',    10],
+                ['优质知识问答瓶',    10],
             ]
         }],
         credits: {
@@ -104,7 +104,7 @@ function column() {
             text: '柱状图'
         },
         xAxis: {
-            categories: ['瓶子', '评论']
+            categories: ['作业求解瓶', '知识问答瓶']
         },
         yAxis: {
             min: 0,
