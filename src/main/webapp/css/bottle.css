@@ -1,0 +1,584 @@
+/*#瓶子页面容器*/
+.container {
+    position: relative;
+    z-index: 1;
+    min-height: 480px;
+    max-height: 600px;
+    width: 100%;
+    height: 100%;
+    _height: 510px;
+}
+/*#扔瓶子，捞瓶子下面目录栏*/
+.bottle_toolbar {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    width: 100%;
+}
+
+/*#瓶子一览*/
+.bottle_toolbar .toolbar_wrap {
+    width: 476px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/*#瓶子数量背景*/
+.numBg {
+    background: #06a6b8;
+}
+
+.numBg {
+    position: relative;
+    left: 28px;
+    top: -1px;
+    height: 20px;
+    -moz-border-radius: 18px;
+    -o-border-radius: 18px;
+    -webkit-border-radius: 18px;
+    -ms-border-radius: 18px;
+    border-radius: 18px;
+    height: 15px\9;
+    float: left;
+    padding: 0 2px;
+}
+/*#扔瓶子*/
+.bottle_toolbar a.btnThrow {
+    margin-right: 18px;
+    background-position: 0 -93px;
+    width: 122px;
+    height: 46px;
+}
+
+/*#捞瓶子*/
+.bottle_toolbar a.btnGet {
+    background-position: 0 -158px;
+    width: 127px;
+}
+
+.bottle_toolbar a.btnGet {
+    margin-right: 34px;
+}
+
+/*#我的瓶子*/
+.bottle_toolbar a.btnBottle {
+    background-position: 0 -28px;
+    width: 155px;
+}
+.bottle_toolbar a.btnBottle, .bottle_toolbar a.btnThrow, .bottle_toolbar a.btnGet {
+    position: relative;
+    height: 46px;
+    display: block;
+    cursor: pointer;
+    float: left;
+}
+
+/*#背景图*/
+.icon, .play, .play_h, .pause, .pause_h {
+    background-image: url(../img/icon27b685.png);
+    background-repeat: no-repeat;
+}
+
+
+.bottle_toolbar a.btnBottle, .bottle_toolbar a.btnThrow, .bottle_toolbar a.btnGet {
+    position: relative;
+    height: 46px;
+    display: block;
+    cursor: pointer;
+    float: left;
+}
+
+/*背景图*/
+.weather_sunshine {
+    position: absolute;
+    left: 107px;
+    top: 0;
+    height: 178px;
+    width: 170px;
+    background: url(../img/flash_sunshine1e9c5d.gif) no-repeat;
+    z-index: -1;
+    display: none;
+}
+
+.defaultthemeshow {
+    display: block;
+}
+.weather_cloud {
+  position: absolute;
+  left: 45px;
+  top: 50px;
+  height: 51px;
+  width: 150px;
+  background: url(../img/bg_cloud1e9c5d.png) no-repeat;
+  display: none;
+}
+
+.mainbody_ad .skin3_island {
+    right: 261px;
+}
+
+.skin3_island {
+  position: absolute;
+  right: 85px;
+  top: 97px;
+  height: 105px;
+  width: 266px;
+  background: url(../img/skin_island21e9c5d.png) repeat;
+}
+.defaultthemeshow {
+  display: block;
+}
+
+.mainbody_ad .skin3_island {
+    right: 261px;
+}
+
+.beach_sand {
+  background: url(../img/bg_sand1e9c5d2.png) no-repeat scroll left bottom;
+  width: 1285px;
+  height: 153px;
+  position: absolute;
+  top: 320px;
+  left: 0;
+}
+
+.wave {
+    position: absolute;
+    left: 0;
+    top: 168px;
+    height: 80px;
+    width: 100%;
+    background: url(../img/wave_bg1e9c5d.png) left bottom repeat-x;
+}
+
+.skin3_beach {
+    position: absolute;
+    left: 43px;
+    top: 312px;
+    height: 94px;
+    width: 122px;
+    background: url(../img/skin_wood1e9c5d.png) no-repeat;
+}
+
+.skin7_beach {
+    position: absolute;
+    left: 10px;
+    top: 262px;
+    height: 130px;
+    width: 326px;
+    background: url(../img/skin_boat_christmas1e9c5d.png) no-repeat;
+    display: none;
+}
+
+/*最大容器*/
+element.style {
+    position: relative;
+    width: 1440px;
+    height: 438px;
+}
+
+user agent stylesheet
+div {
+    display: block;
+}
+.MacOS td, .MacOS input, .MacOS button, .MacOS select, .MacOS body {
+    font-family: "lucida Grande",Verdana;
+}
+select, body, textarea {
+    background-color: #fff;
+    font-size: 12px;
+}
+td, input, button, select, body {
+    font-family: "lucida Grande",Verdana,"Microsoft YaHei";
+    font-size: 12px;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/**/
+#mainFrameContainer {
+    position: absolute;
+    top: 77px;
+    left: 192px;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 4;
+}
+
+#mainFrame {
+    position: absolute;
+    _position: relative;
+}
+
+#mainFrame {
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+.bottle_head {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.bottle_logo {
+    background-position: 0 0;
+    width: 96px;
+    height: 32px;
+    display: block;
+    float: left;
+    position: relative;
+    z-index: 1;
+    margin: 10px 0 0 10px;
+}
+
+div {
+    display: block;
+}
+
+select, body {
+    background: #fff;
+    font-size: 12px;
+}
+
+td, input, button, select, body {
+    font-family: "lucida Grande",Verdana;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+
+.bottle_tips_light, .bottle_select .pannel_content, .bottle_magic .cellaret, .bottle_toolbar a.btnGet, .bottle_toolbar a.btnThrow, .bottle_toolbar a.btnBottle, .myPage .myPhoto .preview, .miniCard, .userCard, .showBottleList .like .emoji_item a.current, .pageJump {
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    webkit-background-clip: padding-box;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    color: #54320B;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    color: #54320B;
+}
+input, textarea, a {
+    outline: none;
+}
+
+body.mainbody {
+    position: relative;
+    min-width: 750px;
+}
+.mainbody_ad {
+    padding-right: 176px;
+}
+body {
+  background: url(../img/bg1e9c5d.png) repeat-x #FFE6AF;
+}
+
+/**/
+.paper_list {
+    position: absolute;
+    top: 54px;
+    left: 14px;
+    z-index: 1;
+}
+
+.paper_list ul {
+    max-height: 345px;
+    max-width: 780px;
+    padding-bottom: 5px;
+    overflow: hidden;
+}
+
+.paper_list_content {
+    background: #fdeec1;
+    border: 1px solid #c1a960;
+}
+
+.bottle_func, .paper_list_content, .showUserList .infoContent .avator, .showUserList .card .gallery li a, .showUserBox .card {
+    -moz-box-shadow: 2px 2px 2px rgba(0,0,0,.1);
+    -o-box-shadow: 2px 2px 2px rgba(0,0,0,.1);
+    -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,.1);
+    -ms-box-shadow: 2px 2px 2px rgba(0,0,0,.1);
+    box-shadow: 2px 2px 2px rgba(0,0,0,.1);
+}
+.bottle_pannel, .bottle_tips .dialog_box, .paper_list_content, .dialogue .previewBox, .myPage_help .previewBox, .previewBox .load, .favour_pannel, .outerPanel, .tab ul li a {
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    webkit-background-clip: padding-box;
+}
+.paper_list_content {
+    width: 150px;
+    height: auto;
+    padding: 14px;
+    float: left;
+}
+
+.paper_list .content .info {
+    margin: 3px 0;
+    height: 34px;
+    line-height: 35px;
+    white-space: nowrap;
+}
+
+.paper_list .content .info, .paper_list .content .name {
+    font-size: 14px;
+}
+.paper_list .content p {
+    height: 17px;
+    line-height: 16px;
+    overflow: hidden;
+}
+p, dl, dd, dt {
+    margin: 0;
+}
+user agent stylesheet
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.bottle_select .pannel_content {
+    background: #00616d;
+}
+
+.bottle_tips_light, .bottle_select .pannel_content, .bottle_magic .cellaret, .bottle_toolbar a.btnGet, .bottle_toolbar a.btnThrow, .bottle_toolbar a.btnBottle, .myPage .myPhoto .preview, .miniCard, .userCard, .showBottleList .like .emoji_item a.current, .pageJump {
+  border-radius: 4px;
+}
+.bottle_select .pannel_content {
+  z-index: 2;
+  padding: 0px 0px 10px 12px;
+}
+.pannel_content {
+  border-radius: 0px 0px 10px 10px;
+}
+user agent stylesheet
+div {
+display: block;
+}
+.bottle_select {
+  position: absolute;
+  width: 300px;
+  font-size: 14px;
+  right: 50%;
+  margin-right: -24px;
+  bottom: 100px;
+  z-index: 3;
+  outline: none;
+}
+
+.bottle_select .pannel_content {
+    background: #00616d;
+}
+.bottle_tips_light, .bottle_select .pannel_content, .bottle_magic .cellaret, .bottle_toolbar a.btnGet, .bottle_toolbar a.btnThrow, .bottle_toolbar a.btnBottle, .myPage .myPhoto .preview, .miniCard, .userCard, .showBottleList .like .emoji_item a.current, .pageJump {
+  border-radius: 4px;
+}
+.bottle_select .pannel_content {
+  z-index: 2;
+  padding: 0px 0px 10px 12px;
+}
+.pannel_content {
+  border-radius: 0px 0px 10px 10px;
+}
+user agent stylesheet
+.type_content {
+    zoom: 1;
+    overflow: hidden;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.bottle_select {
+  position: absolute;
+  width: 300px;
+  font-size: 14px;
+  right: 50%;
+  margin-right: -24px;
+  bottom: 100px;
+  z-index: 3;
+  outline: none;
+}
+
+/*.bottle_select a.select_box {*/
+    /*position: relative;*/
+    /*float: left;*/
+    /*width: 64px;*/
+    /*height: 90px;*/
+    /*margin-right: 7px;*/
+    /*margin-top: 10px;*/
+    /*color: rgb(255, 255, 255);*/
+    /*zoom: 1;*/
+    /*text-decoration: none;*/
+/*}*/
+
+.bottle_select .pannel_content {
+    background: #00616d;
+}
+
+.bottle_tips_light, .bottle_select .pannel_content, .bottle_magic .cellaret, .bottle_toolbar a.btnGet, .bottle_toolbar a.btnThrow, .bottle_toolbar a.btnBottle, .myPage .myPhoto .preview, .miniCard, .userCard, .showBottleList .like .emoji_item a.current, .pageJump {
+  border-radius: 4px;
+}
+.bottle_select .pannel_content {
+  z-index: 2;
+  padding: 0px 0px 10px 12px;
+}
+
+.ico_close_circle_blue {
+    background-position: 0px -32px;
+}
+a.ico_close_circle, .ico_close_circle_blue {
+  position: absolute;
+  top: -10px;
+  right: -11px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  z-index: 55;
+  text-indent: -9999px;
+  overflow: hidden;
+  padding: 0px;
+  background: url(../img/close_icon1e9c5d.png) 0px 0px no-repeat scroll;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  color: #54320B;
+}
+.type_content {
+    zoom: 1;
+    overflow: hidden;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+.bottle_select a.select_box {
+    position: relative;
+    float: left;
+    width: 124px;
+    height: 90px;
+    margin-right: 7px;
+    margin-top: 10px;
+    color: rgb(255, 255, 255);
+    zoom: 1;
+    text-decoration: none;
+}
+.bottle_select .bottle_type8 {
+    width: 30px;
+    background-position: 0px -736px;
+}
+.bottle_select .ico_bottle {
+  display: block;
+  height: 61px;
+  cursor: pointer;
+  background: url(../img/icon_bottle_type1e9c5d.png) no-repeat;
+  margin: 4px auto 5px;
+}
+.bottle_select .bottle_type9 {
+    width: 31px;
+    height: 60px;
+    margin-top: 5px;
+    background-position: 0px -832px;
+}
+.bottle_select .ico_bottle {
+  display: block;
+  height: 61px;
+  cursor: pointer;
+  background: url(../img/icon_bottle_type1e9c5d.png) no-repeat;
+  margin: 4px auto 5px;
+}
+.txt_center {
+    text-align: center;
+}
+p, dl, dd, dt {
+  margin: 0px;
+}
+user agent stylesheet
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.ico_close_circle_blue {
+    background-position: 0px -32px;
+}
+a.ico_close_circle, .ico_close_circle_blue {
+  position: absolute;
+  top: -10px;
+  right: -11px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  z-index: 55;
+  text-indent: -9999px;
+  overflow: hidden;
+  padding: 0px;
+  background: url(../img/close_icon1e9c5d.png) 0px 0px no-repeat scroll;
+}
+
+.bottle_select .triangle {
+    width: 25px;
+    height: 14px;
+    position: absolute;
+    bottom: -13px;
+    left: 60px;
+    background-position: -160px -64px;
+}
+.icon, .play, .play_h, .pause, .pause_h {
+  background-image: url(../img/icon27b685.png);
+  background-repeat: no-repeat;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+.numBg p {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    padding: 2px 1px 0px 0px;
+    margin: 0px;
+}
+
+.bottle_toolbar a.btnThrow .numBg {
+    left: 35px;
+}
+.numBg {
+  background: #06a6b8;
+}
+.numBg {
+  position: relative;
+  left: 28px;
+  top: -1px;
+  height: 20px;
+  float: left;
+  border-radius: 18px;
+  padding: 0px 2px;
+}
+.bottle_toolbar .btnBottle .numBg {
+    left: 54px;
+    background: rgb(184, 22, 6);
+}

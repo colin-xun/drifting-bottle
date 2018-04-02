@@ -17,8 +17,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
     private static final Log log = LogFactory.getLog(HelloController.class);
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+//    @RequestMapping(value = "/index", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+//    public String hello() {
+//        return "index";
+//    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public String hello() {
-        return "index";
+        return "list";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    public String hello1() {
+        return "add";
+    }
+
+    @RequestMapping(value = "/detail", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    public String hello2() {
+        return "detail";
+    }
+
+    @RequestMapping(value = "/bottle", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    public String hello3() {
+        return "bottle";
+    }
+
+    @RequestMapping(value = "/new", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    public String hello4() {
+        return "new";
     }
 }

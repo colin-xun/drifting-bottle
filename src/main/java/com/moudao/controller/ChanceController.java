@@ -69,7 +69,7 @@ public class ChanceController {
      * @param chanceCategory 要兑现的机会的类型 0：捞瓶子，1：扔瓶子
      * @return
      */
-    @RequestMapping(value = "/{userId}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{userId}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Result cashIntegral(@PathVariable(value = "userId", required = true) Integer userId,
                                @RequestParam(value = "integral",required = true) Integer integral,

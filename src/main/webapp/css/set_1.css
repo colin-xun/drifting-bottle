@@ -1,0 +1,157 @@
+
+.set_1_btn {
+	color: #333;
+	cursor: pointer;
+	display: block;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 45px;
+	margin-right: 2em;
+	text-align: center;
+	max-width: 160px;
+	position: relative;
+	text-decoration: none;
+	text-transform: uppercase;
+	vertical-align: middle;
+	width: 100%;
+}
+.set_1_btn:hover {
+	text-decoration: none;
+}
+.Vbtn-1 {
+	background:transparent;
+	text-align: center;
+	float:left;
+}
+.Vbtn-1 svg {
+	height: 45px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.Vbtn-1 rect {
+	fill: none;
+	stroke: #e1b700;
+	stroke-width: 3;
+	stroke-dasharray: 422, 0;
+	transition: all 450ms linear 0s;
+}
+.Vbtn-1:hover {
+	background: rgba(225, 51, 45, 0);
+	font-weight: 900;
+	letter-spacing: 1px;
+	transition: all 150ms linear 0s;
+}
+.Vbtn-1:hover rect {
+	stroke-width: 5;
+	stroke-dasharray: 15, 310;
+	stroke-dashoffset: 48;
+	-webkit-transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+	transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.Vbtn-2 {
+	letter-spacing: 0;
+	transition: all 150ms linear 0s;
+	float:left;
+}
+.Vbtn-2:hover, .Vbtn-2:active {
+	letter-spacing: 5px;
+	transition: all 150ms linear 0s;
+}
+.Vbtn-2:after, .Vbtn-2:before {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	border: 1px solid rgba(255, 255, 255, 0);
+	bottom: 0px;
+	content: " ";
+	display: block;
+	margin: 0 auto;
+	position: relative;
+	-webkit-transition: all 280ms ease-in-out;
+	transition: all 280ms ease-in-out;
+	width: 0;
+}
+.Vbtn-2:hover:after, .Vbtn-2:hover:before {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	border-color: #56c5ff;
+	-webkit-transition: width 350ms ease-in-out;
+	transition: width 350ms ease-in-out;
+	width: 70%;
+}
+.Vbtn-2:hover:before {
+	bottom: auto;
+	top: 0;
+	width: 70%;
+}
+
+
+.Vbtn-3 {
+	background:transparent;
+	text-align: center;
+	float:left;
+}
+.Vbtn-3 svg {
+	height: 45px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.Vbtn-3 rect {
+	fill: none;
+	stroke: #f2625a;
+	stroke-width: 3;
+	stroke-dasharray: 422, 0;
+	transition: all 450ms linear 0s;	
+}
+.Vbtn-3:hover {
+	background: rgba(225, 51, 45, 0);
+	font-weight: 900;
+	letter-spacing: 1px;
+	transition: all 150ms linear 0s;
+}
+.Vbtn-3:hover rect {
+	stroke-width: 5;
+	stroke-dasharray: 15, 310;
+	stroke-dashoffset: 48;
+	-webkit-transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+	transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.Vbtn-4 {
+	letter-spacing: 0;
+	transition: all 150ms linear 0s;
+	float:left;
+}
+.Vbtn-4:hover, .Vbtn-4:active {
+	letter-spacing: 5px;
+	transition: all 150ms linear 0s;
+}
+.Vbtn-4:after, .Vbtn-4:before {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	border: 1px solid rgba(255, 255, 255, 0);
+	bottom: 0px;
+	content: " ";
+	display: block;
+	margin: 0 auto;
+	position: relative;
+	-webkit-transition: all 280ms ease-in-out;
+	transition: all 280ms ease-in-out;
+	width: 0;
+}
+.Vbtn-4:hover:after, .Vbtn-4:hover:before {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	border-color: #666;
+	-webkit-transition: width 350ms ease-in-out;
+	transition: width 350ms ease-in-out;
+	width: 70%;
+}
+.Vbtn-4:hover:before {
+	bottom: auto;
+	top: 0;
+	width: 70%;
+}
