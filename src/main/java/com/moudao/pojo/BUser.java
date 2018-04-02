@@ -1,6 +1,10 @@
 package com.moudao.pojo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.support.spring.annotation.FastJsonView;
 
 public class BUser {
     private Integer userId;
@@ -28,10 +32,31 @@ public class BUser {
     private String ext1;
 
     private String ext2;
-
+    @JSONField (format="yyyy-MM-dd HH:mm:ss")
     private Date createdTime;
-
+    @JSONField (format="yyyy-MM-dd HH:mm:ss")
     private Date updatedTime;
+
+    private String roleName;
+
+  /*  private String integral_String;
+
+    private String sex_String;
+    */
+
+
+
+
+
+
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -152,4 +177,20 @@ public class BUser {
     public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
     }
+
+
+
+	/*public String getSex_String() {
+    	if(sex==1){
+    		return "女";
+    	}
+		return "男";
+	}
+
+	public String getIntegral_String() {
+    	if(identity==1){
+    		return "学生";
+    	}
+		return "教师";
+	}*/
 }

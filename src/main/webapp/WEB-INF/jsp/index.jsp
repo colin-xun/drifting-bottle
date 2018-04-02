@@ -36,7 +36,7 @@
                             }
 					};
 					//首先加载div
-					/* $.post("${pageContext.request.contextPath}/menu_div",function(menu){
+					 $.post("${pageContext.request.contextPath}/menu_div",function(menu){
 						if(menu!=null&&menu.length>0){
 							for(var i= 0;i<menu.length;i++){
 								var pid=menu[i].parentId;
@@ -46,8 +46,8 @@
 									$("#menu_div").append('<div title="'+menuName+'" data-options=iconCls:"icon-mini-add" style="overflow:auto"><ul id="'+menuId+'" class="ztree"></ul></div>');
 								}
 							}
-						}	
-					}); */
+						}
+					});
 					
 					
 					// 基本功能菜单加载	

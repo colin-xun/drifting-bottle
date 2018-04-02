@@ -20,6 +20,48 @@ public class Menu {
     private Date createdTime;
 
     private Date updatedTime;
+    private String id;
+    private String pId;
+    private String name;
+    private String page;
+
+
+
+
+
+    public String getPage() {
+        return requestUrl;
+    }
+
+    public void setPage(String page) {
+        this.page = page;
+    }
+
+    public String getpId() {
+        return parentId+"";
+    }
+
+    public void setpId(String pId) {
+        this.pId = pId;
+    }
+
+    public String getName() {
+        return menuName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return menuId+"";
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
 
     public Integer getMenuId() {
         return menuId;
