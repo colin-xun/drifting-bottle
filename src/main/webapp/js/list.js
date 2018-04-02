@@ -1,19 +1,31 @@
-window.onload=function (ev) {
-    getBottles('0')
-}
+// window.onload=function (ev) {
+//     getBottles('0')
+// }
+
+var userId = $("#user-id").val();
+// var startIndex = 0;
+var pageSize = 15;
+var pageIndex = 1;
+var totalCount = 0;
+
 
 function getBottles(type) {
-    var userId = $("#user-id").val();
     $("#contentType").val(type);
-    var url = $.getRootApi() +"bottle/list/"+userId+"?bottleCategory=" + type;
+    var url = $.getRootApi() +"bottle/list/"+userId+"?bottleCategory=" + type+"&page=" + pageIndex +"&pageSize="+pageSize;
     $.ajax({
         type : "GET", //提交方式
         url : url,//路径
+        async:false,
         data : {},//数据，这里使用的是Json格式进行传输
         success : function(data) {//返回数据根据结果进行相应的处理
             if (data != null) {
                 var allItem = data.data;
                 $("#pageCount").val(allItem.totalCount);
+                //设置分页数据
+                pageIndex = data.data.pageIndex;
+                pageSize = data.data.pageSize;
+                totalCount = data.data.totalCount;
+
                 var items = allItem.items;
                 if (items!=null || items.length!=0) {
                     $("#content-list").html('');
@@ -38,24 +50,36 @@ function getBottles(type) {
     });
 }
 
-layui.use(['laypage', 'layer'], function(){
 
-    // var pindex = "${requestScope.page.pindex}";// 当前页
-    // var ptotalpages = "${requestScope.page.ptotalpages}";// 总页数
-    // var pcount = "${requestScope.page.pcount}";// 总记录数
-    // var psize = "${requestScope.page.psize}";// 每一页的记录数
+function toPage() {
+    layui.use(['laypage', 'layer'], function(){
 
+        var laypage = layui.laypage
+            ,layer = layui.layer;
 
-    var totalCount = $("#pageCount").val();
-    var laypage = layui.laypage
-        ,layer = layui.layer;
-    //完整功能
-    laypage.render({
-        elem: 'demo1'
-        ,count: totalCount //数据总数
-        ,jump: function(obj){
-            console.log(obj)
-        }
+        var type = $("#contentType").val();
+        //完整功能
+        laypage.render({
+            elem: 'demo1'
+            ,count: totalCount //数据总数
+            ,limits: pageSize
+            ,jump: function(obj){
+                pageIndex = obj.curr;
+                getBottles(type);
+            }
+        });
     });
+}
+
+
+$(document).ready(function(){
+    //ajax请求后台数据
+    getBottles('0');
+    toPage();
 });
 
+function getBottlesByType(type) {
+    pageIndex = 1;
+    getBottles(type);
+    toPage();
+}
