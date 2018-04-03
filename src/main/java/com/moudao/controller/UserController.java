@@ -257,4 +257,29 @@ public class UserController {
 		DataGridPageBean pageBean  = userService.findList_Page_BUser( buser,page,rows);
 		return pageBean;
 	}
+
+	/**
+	 * 用戶
+	 * @param bUser
+	 * @return
+	 */
+	@RequestMapping("/user/saveUser")
+	public String saveUser(BUser bUser){
+		userService.saveUser(bUser);
+		return "redirect:/system/user";
+	}
+
+	@RequestMapping("/user/updateUser")
+	public String updateUser(BUser bUser){
+		userService.updateBUser(bUser);
+		return "redirect:/system/user";
+	}
+
+	@RequestMapping("/user/deleterUserById")
+	public String deleterUserById(String id){
+		userService.deleterUserById(id);
+		return "redirect:/system/user";
+	}
+
+
 }

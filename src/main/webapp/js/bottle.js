@@ -22,6 +22,7 @@ function exchangeChance(type){
                 if (data!=null) {
                     if (data.isSuccess) {
                         alert("兑换成功！");
+                        $("#integral").val(num-1);
                     } else {
                         alert("兑换失败！");
                     }

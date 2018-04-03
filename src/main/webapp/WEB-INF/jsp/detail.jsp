@@ -42,6 +42,7 @@
                 success : function(data) {//返回数据根据结果进行相应的处理
                     if (data.isSuccess){
                         alert("成功点赞！")
+                        window.location.reload();
                     } else {
                         alert(data.resultMsg);
                     }

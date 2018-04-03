@@ -29,7 +29,7 @@
             private String unauthorizedUrl;
          -->
         <property name="loginUrl" value="/jsp/login.jsp"></property>
-        <!--<property name="successUrl" value="/jsp/index.jsp"></property>-->
+        <property name="successUrl" value="/jsp/index.jsp"></property>
         <property name="unauthorizedUrl" value="/unauthorized.jsp"></property>
 
         <!-- url拦截，过滤器链 授权

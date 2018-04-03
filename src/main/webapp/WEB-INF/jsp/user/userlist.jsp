@@ -92,7 +92,7 @@
 					$.messager.confirm('提示信息','确定删除吗？',function(r){
 						if(r){
 								var id = rows[0].userId;
-								alert(id);
+							/*	alert(id);*/
 							window.location.href="${pageContext.request.contextPath }/user/deleterUserById?id="+id;
 						}
 					})
