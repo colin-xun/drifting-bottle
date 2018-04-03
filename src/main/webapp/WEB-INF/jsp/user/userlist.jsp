@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -195,12 +196,12 @@
 				width : 120,
 				align : 'center'
 			}, {
-				field : 'integral',
+				field : 'identity',
 				title : '身份',
 				width : 120,
 				align : 'center',
 				formatter: function(value,row,index){
-					if (row.integral==1){
+					if (row.identity==1){
 						return "学生";
 					} else {
 						return "教师";

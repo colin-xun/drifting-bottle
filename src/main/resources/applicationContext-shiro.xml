@@ -43,6 +43,10 @@
                 /image/** = anon
                 /login=anon
                 /index=anon
+                /layui/**=anon
+                /layui2/**=anon
+                /img/**=anon
+                /fonts/**=anon
                 /changeCode = anon   <!-- 放开验证码路径的访问权限 -->
                 /** = authc
             </value>
