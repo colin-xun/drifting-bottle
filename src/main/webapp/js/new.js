@@ -28,6 +28,7 @@ window.onload=function (ev) {
                     //填充标题
                     $(".detail-about").html('');
                     var detailAbout = '<div>'+bottle.bottleTitle+'</div>';
+                    detailAbout += '<div>' + bottle.nickname + '</div>';
                     detailAbout += '<div><i class="iconfont icon-zan"> </i>'+bottle.praiseNum+'</div>';
                     // detailAbout += '<div>' + bottle.creatUserName + '</div>';
                     detailAbout += '<div class="detail-hits" data-id="{{rows.id}}"><span class="layui-btn layui-btn-mini jie-admin" type="collect" data-type="add"> <a id="collectPost" onclick="support(\'0\')"> 点赞此问题 </a> </span></div>';

@@ -63,13 +63,14 @@ public interface BottleService {
      * 漂流瓶条件统计
      * @param bottleCategory 瓶子的类别，0：作业求解瓶，1：知识问答瓶
      * @param bottleStatus   是否是优选瓶子：0：普通瓶子，1：优选瓶子
+     * @param bottleTitle    瓶子标题
      * @param startTime      开始时间 不能大于当前时间
      * @param endTime        结束时间 不能大于当前时间
      * @param page           当前页
      * @param pageSize       页面尺寸
      * @return
      */
-    Result getListByConditon(Byte bottleCategory, Byte bottleStatus, Date startTime, Date endTime, Integer page, Integer pageSize);
+    Result getListByConditon(Byte bottleCategory, Byte bottleStatus, String bottleTitle, Date startTime, Date endTime, Integer page, Integer pageSize);
 
     /**
      *用于管理员统计瓶子的分类及数量，形成统计图

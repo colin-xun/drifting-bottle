@@ -79,11 +79,7 @@ public class BottleController {
         if (userId2 <= 0 || userId2 > Integer.MAX_VALUE) {
             return Result.fail("用户id有误，请重新输入");
         }
-        Random r = new Random();
-        int chargeFlag = r.nextInt(10);
-        if (chargeFlag > 8) {
-            return Result.fail("捞到一个海星");
-        }
+
         try {
             return bottleService.selectByRandom(userId);
         } catch (Exception e) {
@@ -183,6 +179,7 @@ public class BottleController {
      * 瓶子/问题的统计,可以管理员后台查看，用户前台查看总的问题
      * @param bottleCategory 瓶子的类别，0：作业求解瓶，1：知识问答瓶
      * @param bottleStatus   是否是优选瓶子：0：普通瓶子，1：优选瓶子
+     * @param bottleTitle    瓶子标题，模糊查询
      * @param startTime      开始时间 不能大于当前时间
      * @param endTime        结束时间 不能大于当前时间
      * @param page           当前页
@@ -193,6 +190,7 @@ public class BottleController {
     @ResponseBody
     public Result getListByConditon(@RequestParam(value = "bottleCategory", required = false) Byte bottleCategory,
                                     @RequestParam(value = "bottleStatus", required = false) Byte bottleStatus,
+                                    @RequestParam(value = "bottleTitle", required = false) String bottleTitle,
                                     @RequestParam(value = "startTime", required = false) Date startTime,
                                     @RequestParam(value = "endTime", required = false) Date endTime,
                                     @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
@@ -203,7 +201,7 @@ public class BottleController {
             return Result.fail("参数有误");
         }
         try{
-            return bottleService.getListByConditon(bottleCategory, bottleStatus, startTime, endTime, page, pageSize);
+            return bottleService.getListByConditon(bottleCategory, bottleStatus, bottleTitle, startTime, endTime, page, pageSize);
         } catch (Exception e) {
             log.info("查询失败",e);
             return Result.fail("查询失败");

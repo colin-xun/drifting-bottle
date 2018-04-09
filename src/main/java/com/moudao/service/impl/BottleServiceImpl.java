@@ -12,6 +12,7 @@ import com.moudao.util.ChanceBean;
 import com.moudao.util.Constant;
 import com.moudao.util.PageInfoResult;
 import com.moudao.util.Result;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -75,10 +76,15 @@ public class BottleServiceImpl implements BottleService {
         //更新机会
         chanceService.update(chance);
 
+        Random r = new Random();
+        int chargeFlag = r.nextInt(10);
+        if (chargeFlag > 8) {
+            return Result.fail("捞到一个海星");
+        }
+
         Integer maxId = bottleMapper.selectMaxId();
 //        Integer minId = bottleMapper.selectMinId();
         Integer minId = 1;
-        Random r = new Random();
         int randomId = r.nextInt(maxId) + 1;
         //先要保证这个瓶子存在，并且和用户没关系
         Bottle bottle = bottleMapper.selectByPrimaryKey(randomId);
@@ -131,7 +137,11 @@ public class BottleServiceImpl implements BottleService {
         Bottle bottle = bottleMapper.selectByPrimaryKey(bottleId);
         if (bottle != null) {
             BUser bUser = userMapper.selectByPrimaryKey(bottle.getCreateUserId());
-            bottle.setNickname(bUser.getNickname());
+            if(bUser != null){
+                bottle.setNickname(bUser.getNickname());
+            } else {
+                bottle.setNickname("未知用户");
+            }
         }
         return bottle;
     }
@@ -174,11 +184,13 @@ public class BottleServiceImpl implements BottleService {
     }
 
     @Override
-    public Result getListByConditon(Byte bottleCategory, Byte bottleStatus, Date startTime, Date endTime, Integer page, Integer pageSize) {
-        //默认按照时间排序，时间相同的时候按优质瓶子在前进行排序，都是优质瓶子的时候按照点赞数进行评论
-        String orderBy = "created_time desc,bottle_status desc,praise_num desc";
+    public Result getListByConditon(Byte bottleCategory, Byte bottleStatus, String bottleTitle, Date startTime, Date endTime, Integer page, Integer pageSize) {
+        String orderBy = "praise_num desc,bottle_status desc,created_time desc";
         BottleExample example = new BottleExample();
         BottleExample.Criteria criteria = example.createCriteria();
+        if (StringUtils.isNotEmpty(bottleTitle)) {
+            criteria.andBottleTitleLike(bottleTitle);
+        }
         if (startTime != null) {
             criteria.andCreatedTimeGreaterThanOrEqualTo(endTime);
         }
@@ -191,11 +203,11 @@ public class BottleServiceImpl implements BottleService {
         if (bottleStatus != null) {
             criteria.andBottleStatusEqualTo(bottleStatus);
             //按照瓶子优质与否排序的时候，以创建时间作为第一排序，点赞数作为第二排序
-            orderBy = "created_time desc, praise_num desc";
-            if (bottleStatus.byteValue() == Constant.BOTTLE_GOOD) {
+            orderBy = "created_time desc,praise_num desc";
+            /*if (bottleStatus.byteValue() == Constant.BOTTLE_GOOD) {
                 //优质瓶子的时候按照点赞数作为第一排序，创建时间作为第二排序
                 orderBy = "praise_num desc,created_time desc";
-            }
+            }*/
         }
         PageHelper.startPage(page, pageSize, orderBy);
         List<Bottle> bottles = bottleMapper.selectByExample(example);
