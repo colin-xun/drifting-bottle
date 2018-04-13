@@ -94,6 +94,20 @@
 					}
 				});
 				
+				var content1 = '<div  style="width:100%;height:100%;overflow:hidden;">'
+					+ '<iframe id="question_list" src="${pageContext.request.contextPath }/list" scrolling="auto" style="width:100%;height:100%;border:0;" ></iframe></div>';
+				$('#tabs').tabs('add', {
+					title : "问题中心",
+					content : content1,
+					tools:[{ 
+						iconCls:'icon-reload', // 刷新按钮
+						handler : function(){
+							/* var tab = $('#tabs').tabs('getTab',treeNode.name); */
+							$("#question_list").get(0).contentWindow.location.reload(true);
+						}
+					}] 
+				}); 
+				
 				$('#mm').menu({ 
 					onClick:function(item){ 
 						if(item.name==='Close'){
@@ -225,10 +239,10 @@
 		</div>
 		<div data-options="region:'center'">
 			<div id="tabs" fit="true" class="easyui-tabs" border="false">
-				<div title="消息中心" id="subWarp" style="width:100%;height:100%;overflow:hidden;" align="center">
+				<%-- <div title="消息中心" id="subWarp" style="width:100%;height:100%;overflow:hidden;" align="center">
 					<!--<iframe src="./home.html" style="width:100%;height:100%;border:0;"></iframe>-->
 					<img src="${pageContext.request.contextPath }/image/52ddf23725eeb.jpg" width="95%" height="95%" style="padding-top:10px;"/>
-				</div>
+				</div> --%>
 			</div>
 		</div>
 		<div data-options="region:'south',border:false" style="height:50px;padding:10px;">
