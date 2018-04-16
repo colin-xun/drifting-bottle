@@ -28,6 +28,7 @@
     <script src="${pageContext.request.contextPath}/js/ipUrl.js"></script>
     <script src="${pageContext.request.contextPath}/layui2/layui.all.js"></script>
     <script src="${pageContext.request.contextPath}/layui2/css/layui.css"></script>
+    <script src="${pageContext.request.contextPath}/layui3/layer.js"></script>
 
 </head>
 <body>

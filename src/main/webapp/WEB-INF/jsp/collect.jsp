@@ -21,6 +21,8 @@
     <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
     <!-- 需要保存导出功能模块文件是在 highcharts.js 之后引入 -->
     <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script src="${pageContext.request.contextPath}/layui3/layer.js"></script>
+
     <!-- 客户端导出功能模块为可选选项 -->
     <script src="http://cdn.hcharts.cn/highcharts/modules/offline-exporting.js"></script>
 </head>

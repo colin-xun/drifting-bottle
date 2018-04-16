@@ -28,7 +28,7 @@ window.onload=function (ev) {
                     detailAbout += '<div><i class="iconfont icon-zan"> </i>'+bottle.praiseNum+'</div>';
 
 
-                    detailAbout += '<a class="layui-btn layui-btn-xs" onclick="mySubmitFun()">发表评论</a> <a class="layui-btn layui-btn-xs" onclick="support(\'0\')">点赞问题</a>';
+                    detailAbout += '<div class="detail-hits" data-id="{{rows.id}}"><span class="layui-btn layui-btn-xs jie-admin" type="collect" data-type="add"> <a id="collectPost" onclick="support(\'0\')"> 点赞问题 </a> </span></div>';
                     $(".detail-about").html(detailAbout);
 
                     //填充内容
@@ -74,7 +74,7 @@ function addOk(commentId) {
             if (data.isSuccess){
                 window.location.reload();
             } else {
-                layer.msg(data.resultMsg, {icon: 2});
+                layer.alert(data.resultMsg, {icon: 5});
             }
         },
         error : function (data) {

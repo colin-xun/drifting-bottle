@@ -64,7 +64,7 @@ function deleteBottle(bottleId) {
             if (data.isSuccess) {
                 window.location.reload();
             } else {
-                alert(data.resultMsg);
+                layer.alert(data.resultMsg, {icon: 5});
                 window.location.reload();
             }
         }

@@ -17,10 +17,13 @@
     <title>瓶子详情</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css" />
+    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css" />--%>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui2/css/layui.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css" />
-    <script src="${pageContext.request.contextPath}/layui/layui.js">
-    </script>
+    <%--<script src="${pageContext.request.contextPath}/layui/layui.js">--%>
+    <script src="${pageContext.request.contextPath}/layui2/layui.all.js"></script>
+    <script src="${pageContext.request.contextPath}/layui2/layui.js"></script>
+    <script src="${pageContext.request.contextPath}/layui3/layer.js"></script>
     <style type="text/css" rel="stylesheet">
         form { margin: 0; } .editor { margin-top: 5px; margin-bottom: 5px; }
     </style>
@@ -41,10 +44,10 @@
                 },//数据，这里使用的是Json格式进行传输
                 success : function(data) {//返回数据根据结果进行相应的处理
                     if (data.isSuccess){
-                        alert("成功点赞！")
+                        layer.alert('成功点赞！', {icon: 6});
                         window.location.reload();
                     } else {
-                        alert(data.resultMsg);
+                        layer.alert(data.resultMsg, {icon: 5});
                     }
                 }
             });
@@ -55,24 +58,65 @@
             $.ajax({
                 url:url,
                 data:$("#addBottleForm").serialize(),
+                async: false,
                 type:"post",
                 success:function(data){
                     if (data.isSuccess){
-                        alert("评论已发布！");
+                        layer.alert('评论已发布！', {icon: 6});
                         location.href=$.getRootApi()+"home";
                     } else {
-                        alert(data.resultMsg);
+                        layer.alert(data.resultMsg, {icon: 5});
                         location.href=$.getRootApi()+"home";
                     }
                 }
             });
         }
+
+        function mySubmitFun() {
+            layer.prompt({
+                formType: 2,
+                value: '内容不能为空且不得超过200个字符',
+                title: '请输入您的内容',
+                offset: 'auto',
+                area: ['800px', '350px'] //自定义文本域宽高
+            }, function(value, index, elem){
+                userId = $('#userId').val();
+                bottleId = $('#bottleId').val();
+
+                var url = $.getRootApi() +"comment/create";
+                $.ajax({
+                    url:url,
+                    data:{
+                        userId : userId,
+                        bottleId : bottleId,
+                        content : value
+                    },
+                    async: false,
+                    type:"post",
+                    success:function(data){
+                        if (data.isSuccess){
+                            layer.alert('评论已发布！', {icon: 6});
+                            location.href=$.getRootApi()+"home";
+                        } else {
+                            layer.alert(data.resultMsg, {icon: 5});
+                            location.href=$.getRootApi()+"home";
+                        }
+                    }
+                });
+                // alert(value); //得到value
+                layer.close(index);
+            });
+        }
+
+        function prePage() {
+            location.href=$.getRootApi()+"home";
+        }
     </script>
 </head>
 <body>
 <div class="main layui-clear">
+    <button class="layui-btn layui-btn-xs" onclick="prePage()">返回上一页</button>
     <div class="wrap">
-
         <div class="content detail">
             <div class="fly-panel detail-box">
                 <h1> 问题内容 </h1>
@@ -83,67 +127,24 @@
             </div>
             <div class="fly-panel detail-box" style="padding-top: 0;">
                 <a name="comment"> </a>
+                <%--<ul class="jieda photos" id="jieda">--%>
+                <%--</ul>--%>
+
                 <ul class="jieda photos" id="jieda">
-                    <%--<li data-id="12" class="jieda-daan"> <a name="item-121212121212"> </a>--%>
-                    <%--<div class="detail-about detail-about-reply">--%>
-                    <%--<div>纸飞机</div>--%>
-                    <%--<div>3分钟前</div>--%>
-                    <%--<i class="iconfont icon-caina" title="最佳答案"> </i>--%>
-                    <%--</div>--%>
-                    <%--<div class="detail-body jieda-body">--%>
-                    <%--<p> 么么哒 </p>--%>
-                    <%--</div>--%>
-                    <%--<div class="jieda-reply">--%>
-                    <%--<span class="jieda-zan zanok" type="zan"> <i class="iconfont icon-zan"> </i> <em> 12 </em> </span>--%>
-                    <%--</div>--%>
-                    <%--</li>--%>
-                    <%--<li data-id="13"> <a name="item-121212121212"> </a>--%>
-                    <%--<div class="detail-about detail-about-reply">--%>
-                    <%--<div>香菇</div>--%>
-                    <%--<div>asdfsa</div>--%>
-                    <%--</div>--%>
-                    <%--<div class="detail-body jieda-body">--%>
-                    <%--<p> 蓝瘦 </p>--%>
-                    <%--</div>--%>
-                    <%--<div class="jieda-reply">--%>
-                    <%--<span class="jieda-zan" type="zan"> <i class="iconfont icon-zan"> </i> <em> 0 </em> </span>--%>
-                    <%--</div>--%>
-                    <%--</li>--%>
-                    <!-- <li class="fly-none">没有任何回答</li> -->
+
                 </ul>
 
-                <div class="layui-form layui-form-pane">
-                    <form id="addBottleForm">
-                        <%--创建人ID--%>
-                        <input type="hidden" id="userId" name="userId" value=${USER_SESSION.userId}>
-                        <%--瓶子ID--%>
-                        <input type="hidden" id="bottleId" name="bottleId" value="">
+                <input type="hidden" id="userId" name="userId" value=${USER_SESSION.userId}>
+                <%--瓶子ID--%>
+                <input type="hidden" id="bottleId" name="bottleId" value="">
 
-                        <%--<textarea id="L_content" name="content" required="" lay-verify="required" placeholder="我要回答" class="layui-textarea fly-editor" style="height: 150px;"> </textarea>--%>
-                        <textarea rows="6" cols="90" name="content" placeholder="内容不能为空且不得超过200个字符"></textarea>
-                        <%--<div class="layui-form-item layui-form-text">--%>
-                            <%--<div class="layui-input-block">--%>
-                                <%----%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <div class="layui-form-item">
-                            <button onclick="submitForm()" class="layui-btn" lay-filter="*" > 提交回答 </button>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
 </div>
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor.js">
-</script>
-<script type="text/javascript">
-    KE.show({
-        id: 'L_content',
-        resizeMode: 1,
-        items: ['fontname', 'fontsize', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline', 'removeformat', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', 'emoticons', 'image', 'link']
-    });
-</script>
-<script src="${pageContext.request.contextPath}/js/new.js"></script>
+<script src="${pageContext.request.contextPath}/js/new2.js"></script>
+<%--<script>--%>
+    <%----%>
+<%--</script>--%>
 </body>
 </html>

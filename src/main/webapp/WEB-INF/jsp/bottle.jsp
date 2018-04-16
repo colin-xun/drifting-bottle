@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-theme.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bottle.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/list.css" />
+    <script src="${pageContext.request.contextPath}/layui3/layer.js"></script>
+    <script src="${pageContext.request.contextPath}/layui2/layui.all.js"></script>
+
     <script src="${pageContext.request.contextPath}/js/ipUrl.js"></script>
 </head>
 <body>

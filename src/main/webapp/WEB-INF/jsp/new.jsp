@@ -19,13 +19,14 @@
     <meta name="description" content="" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css" />
-    <script src="${pageContext.request.contextPath}/layui/layui.js">
-    </script>
+    <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
+    <script src="${pageContext.request.contextPath}/layui2/layui.all.js"></script>
     <style type="text/css" rel="stylesheet">
         form { margin: 0; } .editor { margin-top: 5px; margin-bottom: 5px; }
     </style>
     <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/ipUrl.js"></script>
+    <script src="${pageContext.request.contextPath}/layui3/layer.js"></script>
 
     <script type="text/javascript">
         function support(type) {
@@ -41,10 +42,12 @@
                 },//数据，这里使用的是Json格式进行传输
                 success : function(data) {//返回数据根据结果进行相应的处理
                     if (data.isSuccess){
-                        alert("成功点赞！")
+                        layer.alert('成功点赞！', {icon: 6});
+                        // alert('成功点赞！')
                         window.location.reload();
                     } else {
-                        alert(data.resultMsg);
+                        // alert(data.resultMsg);
+                        layer.alert(data.resultMsg, {icon: 5});
                     }
                 }
             });
@@ -57,8 +60,11 @@
                 data:$("#addBottleForm").serialize(),
                 type:"post",
                 success:function(data){
-                    alert("评论已发布！");
+                    layer.alert('评论已发布！', {icon: 6});
                     location.href=$.getRootApi()+"bottle";
+                },
+                error:function (data) {
+                    layer.alert("服务器繁忙。。。", {icon: 5});
                 }
             });
         }
@@ -108,7 +114,7 @@
                 </ul>
 
                 <div class="layui-form layui-form-pane">
-                    <form id="addBottleForm" name="addBottleForm" method="post" action="${pageContext.request.contextPath }/comment/create">
+                    <form id="addBottleForm">
                         <%--创建人ID--%>
                         <input type="hidden" id="userId" name="userId" value=${USER_SESSION.userId}>
                         <%--瓶子ID--%>

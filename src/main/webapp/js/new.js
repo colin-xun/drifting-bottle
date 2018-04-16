@@ -69,7 +69,7 @@ window.onload=function (ev) {
                     $("#jieda").html(allStr);
                 }
             } else {
-                alert(data.resultMsg);
+                layer.alert(data.resultMsg, {icon: 5});
             }
         }
     });
@@ -95,9 +95,10 @@ function addOk(commentId) {
         success : function(data) {//返回数据根据结果进行相应的处理
             // this.addClass("zanok")
             if (data.isSuccess){
+                layer.alert('点赞成功！', {icon: 6});
                 window.location.reload();
             } else {
-                alert(data.resultMsg);
+                layer.alert(data.resultMsg, {icon: 5});
             }
 
         }
