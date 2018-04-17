@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.xml.bind.annotation.XmlAccessorOrder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -71,12 +70,16 @@ public class CommentServiceImpl implements CommentService {
         criteria.andBottleIdEqualTo(bottleId);
         List<BComment> commets = null;
         if (commentStatus != null) {
+            String orderBy = null;
             if (Constant.COMMENT_COMMON == commentStatus.byteValue()) {
-                String orderBy = "created_time desc";
+                orderBy = "created_time desc";
+            } else {
+                orderBy = "parise_num desc";
+            }
+            if (page != null && pageSize != null) {
                 PageHelper.startPage(page, pageSize, orderBy);
             } else {
-                String orderBy = "parise_num desc";
-                PageHelper.startPage(page, pageSize, orderBy);
+                PageHelper.orderBy(orderBy);
             }
             criteria.andCommentStatusEqualTo(commentStatus);
             commets = commentMapper.selectByExample(example);
@@ -86,7 +89,11 @@ public class CommentServiceImpl implements CommentService {
             return getListResult(commets);
         }
         String orderBy = "created_time desc";
-        PageHelper.startPage(page, pageSize, orderBy);
+        if (page != null && pageSize != null) {
+            PageHelper.startPage(page, pageSize, orderBy);
+        } else {
+            PageHelper.orderBy(orderBy);
+        }
         commets = commentMapper.selectByExample(example);
         if (!CollectionUtils.isEmpty(commets)) {
             commets = handleUsername(commets);
