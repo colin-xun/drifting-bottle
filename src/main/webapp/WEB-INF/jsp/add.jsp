@@ -83,13 +83,14 @@
                         <input type="text" id="L_title" name="bottleTitle" required lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-                <div class="layui-form-item layui-form-text">
-                    <div class="layui-input-block">
-                        <div class="editor">
-                            <textarea id="content" name="bottleContent" style="width:1040px;height:450px;visibility:hidden;"></textarea>
-                        </div>
-                    </div>
-                </div>
+                    <textarea id="content" name="bottleContent" style="width:1040px;height:450px;visibility:hidden;"></textarea>
+                <%--<div class="layui-form-item layui-form-text">--%>
+                    <%--<div class="layui-input-block">--%>
+                        <%--<div class="editor">--%>
+                            <%----%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
                 <div class="layui-form-item">
                     <button onclick="submitForm()" class="layui-btn" lay-filter="*" lay-submit>立即发布</button>
                 </div>

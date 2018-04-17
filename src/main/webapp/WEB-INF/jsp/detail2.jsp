@@ -44,10 +44,15 @@
                 },//数据，这里使用的是Json格式进行传输
                 success : function(data) {//返回数据根据结果进行相应的处理
                     if (data.isSuccess){
-                        layer.alert('成功点赞！', {icon: 6});
-                        window.location.reload();
+                        layer.alert('成功点赞！', {
+                            icon: 6,
+                            yes: function (index) {
+                                layer.close(index);
+                                window.location.reload();
+                            }
+                        });
                     } else {
-                        layer.alert(data.resultMsg, {icon: 5});
+                        layer.msg(data.resultMsg, {icon: 2});
                     }
                 }
             });
@@ -62,11 +67,21 @@
                 type:"post",
                 success:function(data){
                     if (data.isSuccess){
-                        layer.alert('评论已发布！', {icon: 6});
-                        location.href=$.getRootApi()+"home";
+                        layer.alert('评论已发布！', {
+                            icon: 6,
+                            yes: function (index) {
+                                layer.close(index);
+                                location.href=$.getRootApi()+"home";
+                            }
+                        });
                     } else {
-                        layer.alert(data.resultMsg, {icon: 5});
-                        location.href=$.getRootApi()+"home";
+                        layer.alert(data.resultMsg, {
+                            icon: 5,
+                            yes: function (index) {
+                                layer.close(index);
+                                location.href=$.getRootApi()+"home";
+                            }
+                        });
                     }
                 }
             });
@@ -95,16 +110,26 @@
                     type:"post",
                     success:function(data){
                         if (data.isSuccess){
-                            layer.alert('评论已发布！', {icon: 6});
-                            location.href=$.getRootApi()+"home";
+                            layer.alert('评论已发布！', {
+                                icon: 6,
+                                yes: function (index) {
+                                    layer.close(index);
+                                    location.href=$.getRootApi()+"home";
+                                }
+                            });
                         } else {
-                            layer.alert(data.resultMsg, {icon: 5});
-                            location.href=$.getRootApi()+"home";
+                            layer.alert(data.resultMsg, {
+                                icon: 5,
+                                yes: function (index) {
+                                    layer.close(index);
+                                    location.href=$.getRootApi()+"home";
+                                }
+                            });
                         }
                     }
                 });
                 // alert(value); //得到value
-                layer.close(index);
+                // layer.close(index);
             });
         }
 

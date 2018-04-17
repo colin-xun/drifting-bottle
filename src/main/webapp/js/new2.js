@@ -72,7 +72,13 @@ function addOk(commentId) {
         },//数据，这里使用的是Json格式进行传输
         success : function(data) {//返回数据根据结果进行相应的处理
             if (data.isSuccess){
-                window.location.reload();
+                layer.alert('成功点赞！', {
+                    icon: 6,
+                    yes: function (index) {
+                        layer.close(index);
+                        window.location.reload();
+                    }
+                });
             } else {
                 layer.alert(data.resultMsg, {icon: 5});
             }

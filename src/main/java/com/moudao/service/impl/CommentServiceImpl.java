@@ -68,6 +68,7 @@ public class CommentServiceImpl implements CommentService {
     public Result getCommentListByBottleId(Integer bottleId, Byte commentStatus, Integer page, Integer pageSize) {
         BCommentExample example = new BCommentExample();
         BCommentExample.Criteria criteria = example.createCriteria();
+        criteria.andBottleIdEqualTo(bottleId);
         List<BComment> commets = null;
         if (commentStatus != null) {
             if (Constant.COMMENT_COMMON == commentStatus.byteValue()) {

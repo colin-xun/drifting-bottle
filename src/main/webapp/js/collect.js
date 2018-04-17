@@ -22,7 +22,12 @@ function getForm() {
                         optionsRes.series[0].data[3][1] = data.data.solveGoodNum;
                     }
                 } else {
-                    alert(data.resultMsg);
+                    layer.alert(data.resultMsg, {
+                        icon: 5,
+                        yes: function (index) {
+                            layer.close(index);
+                        }
+                    });
                 }
             }
         }

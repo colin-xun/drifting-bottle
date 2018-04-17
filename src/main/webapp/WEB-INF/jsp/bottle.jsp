@@ -18,17 +18,18 @@
     <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/layui2/css/layui.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-theme.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bottle.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/list.css" />
-    <script src="${pageContext.request.contextPath}/layui3/layer.js"></script>
     <script src="${pageContext.request.contextPath}/layui2/layui.all.js"></script>
+    <script src="${pageContext.request.contextPath}/layui2/layui.js"></script>
+    <script src="${pageContext.request.contextPath}/layui3/layer.js"></script>
 
     <script src="${pageContext.request.contextPath}/js/ipUrl.js"></script>
 </head>
 <body>
 <div id="mainFrameContainer">
-    <!--<iframe style="display:none" src="add.html" scrolling="no" width="100%" height="65px" ></iframe>-->
     <input type="hidden" id="user-id" name="user-id" value=${USER_SESSION.userId}>
     <input type="hidden" id="integral" name="integral" value=${USER_SESSION.integral}>
     <div class="container" id="bottle_container" name="mainFrame">
