@@ -9,9 +9,9 @@ var pageIndex = 1;
 var totalCount = 0;
 
 
-function getBottles(type) {
-    $("#contentType").val(type);
-    var url = $.getRootApi() +"bottle/list/"+userId+"?bottleCategory=" + type+"&page=" + pageIndex +"&pageSize="+pageSize;
+function getBottles() {
+    var bottleTitle = $("#sendText").val();
+    var url = $.getRootApi() +"bottle/listAll?page=" + pageIndex +"&pageSize="+pageSize+"&bottleTitle="+bottleTitle;
     $.ajax({
         type : "GET", //提交方式
         url : url,//路径
@@ -77,7 +77,6 @@ function toPage() {
         var laypage = layui.laypage
             ,layer = layui.layer;
 
-        var type = $("#contentType").val();
         //完整功能
         laypage.render({
             elem: 'demo1'
@@ -86,7 +85,7 @@ function toPage() {
             ,jump: function(obj){
                 pageIndex = obj.curr;
                 pageSize = obj.limit;
-                getBottles(type);
+                getBottles();
             }
         });
     });
@@ -95,12 +94,17 @@ function toPage() {
 
 $(document).ready(function(){
     //ajax请求后台数据
-    getBottles('0');
+    getBottles();
     toPage();
 });
 
 function getBottlesByType(type) {
     pageIndex = 1;
     getBottles(type);
+    toPage();
+}
+
+function getAllBottle() {
+    getBottles();
     toPage();
 }

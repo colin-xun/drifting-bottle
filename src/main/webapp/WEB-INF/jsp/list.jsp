@@ -22,7 +22,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/set_1.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/set_3.css">
+    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">--%>
     <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/ipUrl.js"></script>
     <script src="${pageContext.request.contextPath}/layui2/layui.all.js"></script>
     <script src="${pageContext.request.contextPath}/layui2/css/layui.css"></script>
@@ -30,14 +32,24 @@
 </head>
 <body>
 
-<div style="margin-left: 500px">
-    <a href="#" class="set_1_btn Vbtn-1" onclick="getBottlesByType('0')"> <svg>
-        <rect x="0" y="0" fill="none" width="100%" height="100%"></rect>
-    </svg> 捞到的瓶子 </a>
+<div style="margin-left: 900px">
+    <%--<a href="#" class="set_1_btn Vbtn-1" onclick="getBottlesByType('0')"> <svg>--%>
+        <%--<rect x="0" y="0" fill="none" width="100%" height="100%"></rect>--%>
+    <%--</svg> 捞到的瓶子 </a>--%>
 
-    <a href="#" class="set_1_btn Vbtn-3" onclick="getBottlesByType('1')"> <svg>
-        <rect x="0" y="0" fill="none" width="100%" height="100%"></rect>
-    </svg> 扔出的瓶子 </a>
+    <%--<a href="#" class="set_1_btn Vbtn-3" onclick="getBottlesByType('1')"> <svg>--%>
+        <%--<rect x="0" y="0" fill="none" width="100%" height="100%"></rect>--%>
+    <%--</svg> 扔出的瓶子 </a>--%>
+        <div class="row" style="margin-top: 10px">
+            <div style="width: 250px;">
+                <div class="input-group">
+                    <input type="text" id="sendText" class="form-control" placeholder="搜索相关问题...">
+                    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onclick="getAllBottle()">搜索</button>
+      </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div>
 </div>
 <input type="hidden" id="user-id" name="user-id" value=${USER_SESSION.userId}>
 <input type="hidden" id="pageCount" name="pageCount" value="">

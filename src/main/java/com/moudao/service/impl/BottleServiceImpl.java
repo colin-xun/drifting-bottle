@@ -189,7 +189,7 @@ public class BottleServiceImpl implements BottleService {
         BottleExample example = new BottleExample();
         BottleExample.Criteria criteria = example.createCriteria();
         if (StringUtils.isNotEmpty(bottleTitle)) {
-            criteria.andBottleTitleLike(bottleTitle);
+            criteria.andBottleTitleLike("%"+bottleTitle+"%");
         }
         if (startTime != null) {
             criteria.andCreatedTimeGreaterThanOrEqualTo(endTime);
