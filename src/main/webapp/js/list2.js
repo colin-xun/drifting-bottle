@@ -9,9 +9,9 @@ var pageIndex = 1;
 var totalCount = 0;
 
 
-function getBottles(type) {
-    $("#contentType").val(type);
-    var url = $.getRootApi() +"bottle/list/"+userId+"?bottleCategory=" + type+"&page=" + pageIndex +"&pageSize="+pageSize;
+function getBottles() {
+    var bottleTitle = $("#sendText").val();
+    var url = $.getRootApi() +"bottle/listAll?page=" + pageIndex +"&pageSize="+pageSize+"&bottleTitle="+bottleTitle;
     $.ajax({
         type : "GET", //提交方式
         url : url,//路径
@@ -41,7 +41,7 @@ function getBottles(type) {
                         }
                         var bottleId = result['bottleId'];
                         var updateTime = result['updatedTime'];
-                        allStr += '<li class="fly-list-li"><h2 class="fly-tip"><a href="detail.html?bottleId='+bottleId+'">' + title + '</a><span class="fly-tip-stick" style="float: right">' + typeName + '</span></h2><p><span>' + updateTime + '</span><a href="#" onclick="deleteBottle('+bottleId+')"><span class="fly-tip-stick" style="float: right"> <i class="layui-icon"></i>删除 </span></a></p></li>';
+                        allStr += '<li class="fly-list-li"><h2 class="fly-tip"><a href="detail2.html?bottleId='+bottleId+'">' + title + '</a><span class="fly-tip-stick" style="float: right">' + typeName + '</span></h2><p><span>' + updateTime + '</span><a href="#" onclick="deleteBottle('+bottleId+')"></a></p></li>';
                     });
                     $("#content-list").html(allStr);
                 }
@@ -77,7 +77,6 @@ function toPage() {
         var laypage = layui.laypage
             ,layer = layui.layer;
 
-        var type = $("#contentType").val();
         //完整功能
         laypage.render({
             elem: 'demo1'
@@ -86,7 +85,7 @@ function toPage() {
             ,jump: function(obj){
                 pageIndex = obj.curr;
                 pageSize = obj.limit;
-                getBottles(type);
+                getBottles();
             }
         });
     });
@@ -95,12 +94,17 @@ function toPage() {
 
 $(document).ready(function(){
     //ajax请求后台数据
-    getBottles('0');
+    getBottles();
     toPage();
 });
 
 function getBottlesByType(type) {
     pageIndex = 1;
     getBottles(type);
+    toPage();
+}
+
+function getAllBottle() {
+    getBottles();
     toPage();
 }

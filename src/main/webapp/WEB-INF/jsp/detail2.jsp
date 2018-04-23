@@ -59,10 +59,10 @@
                 success:function(data){
                     if (data.isSuccess){
                         alert("评论已发布！");
-                        location.href=$.getRootApi()+"list";
+                        location.href=$.getRootApi()+"home";
                     } else {
                         alert(data.resultMsg);
-                        location.href=$.getRootApi()+"list";
+                        location.href=$.getRootApi()+"home";
                     }
                 }
             });
@@ -119,9 +119,13 @@
                         <%--瓶子ID--%>
                         <input type="hidden" id="bottleId" name="bottleId" value="">
 
-                        <%--<textarea rows="5" cols="" name="content"></textarea>--%>
+                        <%--<textarea id="L_content" name="content" required="" lay-verify="required" placeholder="我要回答" class="layui-textarea fly-editor" style="height: 150px;"> </textarea>--%>
                         <textarea rows="6" cols="90" name="content" placeholder="内容不能为空且不得超过200个字符"></textarea>
-
+                        <%--<div class="layui-form-item layui-form-text">--%>
+                            <%--<div class="layui-input-block">--%>
+                                <%----%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                         <div class="layui-form-item">
                             <button onclick="submitForm()" class="layui-btn" lay-filter="*" > 提交回答 </button>
                         </div>

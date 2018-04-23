@@ -95,7 +95,7 @@
 				});
 				
 				var content1 = '<div  style="width:100%;height:100%;overflow:hidden;">'
-					+ '<iframe id="question_list" src="${pageContext.request.contextPath }/list" scrolling="auto" style="width:100%;height:100%;border:0;" ></iframe></div>';
+					+ '<iframe id="question_list" src="${pageContext.request.contextPath }/home" scrolling="auto" style="width:100%;height:100%;border:0;" ></iframe></div>';
 				$('#tabs').tabs('add', {
 					title : "问题中心",
 					content : content1,
