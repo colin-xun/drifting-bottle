@@ -113,7 +113,7 @@
                 </ul>
 
                 <div class="layui-form layui-form-pane">
-                    <form id="addBottleForm" name="addBottleForm" method="post" action="${pageContext.request.contextPath }/comment/create">
+                    <form id="addBottleForm">
                         <%--创建人ID--%>
                         <input type="hidden" id="userId" name="userId" value=${USER_SESSION.userId}>
                         <%--瓶子ID--%>
