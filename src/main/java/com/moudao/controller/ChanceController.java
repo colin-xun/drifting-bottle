@@ -4,6 +4,7 @@ import com.moudao.pojo.Bottle;
 import com.moudao.pojo.Chance;
 import com.moudao.service.BottleService;
 import com.moudao.service.ChanceService;
+import com.moudao.service.UserService;
 import com.moudao.util.ChanceBean;
 import com.moudao.util.Constant;
 import com.moudao.util.Result;
@@ -60,6 +61,24 @@ public class ChanceController {
 
     private Chance newChance(Integer userId, byte flag) {
         return chanceService.createBottle(userId, flag);
+    }
+
+
+    /**
+     * 用户获取自己的积分兑现机会
+     * @param userId
+     * @return
+     */
+    @RequestMapping(value = "getIntegral/{userId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Result getIntegral(@PathVariable(value = "userId", required = true) Integer userId) {
+        try {
+            Integer num =  chanceService.getIntegral(userId);
+            return Result.success(num);
+        } catch (Exception e) {
+            log.info("查询失败，请稍后重试！", e);
+            return Result.fail("查询失败，请稍后重试！");
+        }
     }
 
     /**

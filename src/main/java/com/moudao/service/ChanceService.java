@@ -15,6 +15,13 @@ public interface ChanceService {
     void update(Chance chance);
 
     /**
+     * 获取这个用户的积分
+     * @param userId
+     * @return
+     */
+    Integer getIntegral(Integer userId);
+
+    /**
      * 创建一个新的机会
      * @param createUserId 创建者id
      * @param b 机会的类型，0：捞，1：扔

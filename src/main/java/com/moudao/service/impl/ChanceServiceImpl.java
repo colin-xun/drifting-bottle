@@ -49,6 +49,12 @@ public class ChanceServiceImpl implements ChanceService {
     }
 
     @Override
+    public Integer getIntegral(Integer userId) {
+        BUser bUser = userMapper.selectByPrimaryKey(userId);
+        return bUser.getIntegral();
+    }
+
+    @Override
     public Chance getThrowChanceByUserId(Integer userId) {
         return chanceMapper.getThrowChanceByUserId(userId);
     }

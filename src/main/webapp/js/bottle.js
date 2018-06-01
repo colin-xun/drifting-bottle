@@ -3,7 +3,28 @@ function showTypeBottle() {
 }
 
 function exchangeChance(type){
-    var num = $("#integral").val();
+    // var num = $("#integral").val();
+    var num = 0;
+
+    var userId = $("#user-id").val();
+    var url = $.getRootApi() +"chance/getIntegral/"+userId;
+
+    $.ajax({
+        type: "GET", //提交方式
+        url: url,//路径
+        data: {},//数据，这里使用的是Json格式进行传输
+        async: false,
+        success: function (data) {
+            if (data.isSuccess) {
+                num = data.data;
+            } else {
+                alert(data.resultMsg);
+                window.location.reload();
+            }
+        }
+    });
+
+
     var msg ="您当前积分为:" + num + ",请输入您要兑换的次数（1积分=1次）"
     var exchangeNum=prompt(msg,"1");
     var userId = $("#user-id").val();

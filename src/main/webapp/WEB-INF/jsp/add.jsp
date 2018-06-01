@@ -54,7 +54,7 @@
                 data:$("#addBottleForm").serialize(),
                 type:"post",
                 success:function(data){
-                    alert("瓶子已扔入大海！");
+                    alert("瓶子已扔入大海！！！！！！");
                     location.href=$.getRootApi()+"bottle";
                 }
             });
