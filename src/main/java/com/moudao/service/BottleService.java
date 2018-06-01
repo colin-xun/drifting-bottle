@@ -24,7 +24,7 @@ public interface BottleService {
     /**
      * 用户删除瓶子，实际上是解除和用户和瓶子的关系
      */
-    void deleteBottleByUser(Integer bottleId, Integer userId);
+    void deleteBottleByUser(Integer bottleId, Integer userId,Integer typeCode);
 
     /**
      * 查询用户捞的瓶子列表

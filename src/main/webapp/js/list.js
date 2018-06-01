@@ -41,7 +41,7 @@ function getBottles(type) {
                         }
                         var bottleId = result['bottleId'];
                         var updateTime = result['updatedTime'];
-                        allStr += '<li class="fly-list-li"><h2 class="fly-tip"><a href="detail.html?bottleId='+bottleId+'">' + title + '</a><span class="fly-tip-stick" style="float: right">' + typeName + '</span></h2><p><span>' + updateTime + '</span><a href="#" onclick="deleteBottle('+bottleId+')"><span class="fly-tip-stick" style="float: right"> <i class="layui-icon"></i>删除 </span></a></p></li>';
+                        allStr += '<li class="fly-list-li"><h2 class="fly-tip"><a href="detail.html?bottleId='+bottleId+'">' + title + '</a><span class="fly-tip-stick" style="float: right">' + typeName + '</span></h2><p><span>' + updateTime + '</span><a href="#" onclick="deleteBottle('+bottleId+','+type+')"><span class="fly-tip-stick" style="float: right"> <i class="layui-icon"></i>删除 </span></a></p></li>';
                     });
                     $("#content-list").html(allStr);
                 }
@@ -50,7 +50,7 @@ function getBottles(type) {
     });
 }
 
-function deleteBottle(bottleId) {
+function deleteBottle(bottleId,typeCode) {
     var userId = $("#user-id").val();
     var url = $.getRootApi() +"bottle/delete/"+bottleId;
 
@@ -58,7 +58,8 @@ function deleteBottle(bottleId) {
         type: "POST", //提交方式
         url: url,//路径
         data: {
-            "userId": userId
+            "userId": userId,
+            "typeCode": typeCode
         },//数据，这里使用的是Json格式进行传输
         success: function (data) {
             if (data.isSuccess) {

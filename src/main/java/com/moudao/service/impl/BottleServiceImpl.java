@@ -119,12 +119,21 @@ public class BottleServiceImpl implements BottleService {
     }
 
     @Override
-    public void deleteBottleByUser(Integer bottleId, Integer userId) {
-        BUserBottleExample example = new BUserBottleExample();
-        BUserBottleExample.Criteria criteria = example.createCriteria();
-        criteria.andBottleIdEqualTo(bottleId);
-        criteria.andUserIdEqualTo(userId);
-        bUserBottleMapper.deleteByExample(example);
+    public void deleteBottleByUser(Integer bottleId, Integer userId,Integer typeCode) {
+        if (typeCode == 0) {
+            BUserBottleExample example = new BUserBottleExample();
+            BUserBottleExample.Criteria criteria = example.createCriteria();
+            criteria.andBottleIdEqualTo(bottleId);
+            criteria.andUserIdEqualTo(userId);
+            bUserBottleMapper.deleteByExample(example);
+        } else {
+            BottleExample example = new BottleExample();
+            BottleExample.Criteria criteria = example.createCriteria();
+            criteria.andBottleIdEqualTo(bottleId);
+            criteria.andCreateUserIdEqualTo(userId);
+            bottleMapper.deleteByExample(example);
+        }
+
     }
 
     @Override

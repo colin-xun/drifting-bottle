@@ -117,9 +117,10 @@ public class BottleController {
      */
     @RequestMapping(value = "/delete/{bottleId}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Result deleteBottleByUser(@PathVariable(value = "bottleId", required = true) Integer bottleId, @RequestParam(value = "userId", required = true) Integer userId) {
+    public Result deleteBottleByUser(@PathVariable(value = "bottleId", required = true) Integer bottleId, @RequestParam(value = "userId", required = true) Integer userId, @RequestParam(value = "typeCode", required = true) Integer typeCode) {
         try {
-            bottleService.deleteBottleByUser(bottleId, userId);
+            bottleService.deleteBottleByUser(bottleId, userId, typeCode);
+
             return Result.success("删除瓶子成功");
         } catch (Exception e) {
             log.info("删除瓶子失败", e);
