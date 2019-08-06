@@ -1,27 +1,52 @@
 package com.moudao.pojo;
 
+import com.moudao.util.InsertValid;
+import com.moudao.util.UpdateValid;
+
+import javax.validation.constraints.*;
 import java.util.Date;
 
 public class BComment {
+    @NotNull(groups = {UpdateValid.class}, message = "评论的id不能为空")
     private Integer commentId;
 
+    @NotBlank(groups = {InsertValid.class,UpdateValid.class}, message = "评论内容不能为空")
+    @Size(groups = {InsertValid.class,UpdateValid.class}, min = 1, max = 200, message = "瓶子的内容不得超过200个字符")
     private String content;
 
+    @NotNull(groups = {UpdateValid.class}, message = "点赞数不能为空")
+    @Min(groups = {InsertValid.class,UpdateValid.class}, value = 0, message = "点赞数不能为负数")
     private Integer pariseNum;
 
+    @NotNull(groups = {UpdateValid.class}, message = "是否是优选评论，0：否，1：是，不能为空")
     private Byte commentStatus;
 
+    @NotNull(groups = {InsertValid.class,UpdateValid.class}, message = "创建者id不能为空")
     private Integer userId;
 
+    @NotNull(groups = {InsertValid.class,UpdateValid.class}, message = "瓶子id不能为空")
     private Integer bottleId;
 
     private String ext1;
 
     private String ext2;
 
+    @Past(groups = {InsertValid.class,UpdateValid.class}, message = "创建时间应该是一个过去的时间")
     private Date createdTime;
 
+    @Past(groups = {InsertValid.class,UpdateValid.class}, message = "修改时间应该是一个过去的时间")
     private Date updatedTime;
+
+    //这个是用户的名字
+    private String nickname;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
     public Integer getCommentId() {
         return commentId;

@@ -1,4 +1,5 @@
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
+<!--<ehcache>-->
     <diskStore path="java.io.tmpdir"/>
     <!-- 
 		diskStore:磁盘上存储目录
@@ -9,6 +10,7 @@
 		maxElementsOnDisk：磁盘存储对象最大数量
 		diskExpiryThreadIntervalSeconds：清理内存中对象线程执行间隔时间
 		memoryStoreEvictionPolicy：清理对象策略，LRU 最近最少使用优先被清理 FIFO:first in first out
+		maxBytesLocalHeap: 最大堆内存存储为50m,,注意：这个属性和maxElementsInMemory是不兼容的，只能选择其一进行配置
 	 -->
     
     <defaultCache
@@ -19,6 +21,7 @@
             maxElementsOnDisk="10000000"
             diskExpiryThreadIntervalSeconds="120"
             memoryStoreEvictionPolicy="LRU">
+            <!--maxBytesLocalHeap="50m"-->
         <persistence strategy="localTempSwap"/>
     </defaultCache>
 </ehcache>

@@ -45,7 +45,7 @@
 	
 	<!-- 批量扫描接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.moudao.dao"></property>
+		<property name="basePackage" value="com.moudao.mapper"></property>
 		<!-- 集群数据库,多数据源,主从复制,读写分离,默认是sqlSessionFactory -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>

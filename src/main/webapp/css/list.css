@@ -1,0 +1,69 @@
+.bottle_box {
+    position: absolute;
+    top: 48px;
+    z-index: 99;
+    width: 630px;
+    right: 50%;
+    margin-right: -315px;
+    outline: none;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+
+.bottle_interactive .bottle_pannel, .bottle_list .bottle_pannel, .bottle_setting .bottle_pannel {
+    background: #f9e5c1 url(../img/bottle_interactive_top1e9c5d.png) repeat-x left -1px;
+}
+
+          .bottle_box .bottle_pannel {
+              position: relative;
+              z-index: 4;
+              outline: none;
+          }
+          .bor1 {
+              border: 1px solid #9d7111;
+          }
+          .bg1 {
+              background: #fdf0d7;
+          }
+          .bottle_pannel, .bottle_tips .tips, .myPage, .updateDot, .showUserBox .dialogueOn .card {
+              box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px;
+          }
+          .bottle_pannel, .bottle_tips .dialog_box, .paper_list_content, .dialogue .previewBox, .myPage_help .previewBox, .previewBox .load, .favour_pannel, .outerPanel, .tab ul li a {
+              border-radius: 10px;
+          }
+          .bottle_pannel {
+              width: 630px;
+              font-size: 14px;
+              line-height: 1.5;
+          }
+user agent stylesheet
+div {
+    display: block;
+}
+
+.nav_con {
+    height: 30px;
+    position: relative;
+    padding: 15px 0px;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+          .bottle_pannel {
+              width: 630px;
+              font-size: 14px;
+              line-height: 1.5;
+          }
+
+.container {
+    position: relative;
+    z-index: 1;
+    min-height: 480px;
+    max-height: 600px;
+    width: 100%;
+    height: 100%;
+}

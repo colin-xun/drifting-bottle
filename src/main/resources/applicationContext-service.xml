@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 	<!-- 把service交给spring管理 -->
-	<context:component-scan base-package="com.moudao.service"></context:component-scan>
+	<context:component-scan base-package="com.moudao.service,com.moudao.config"></context:component-scan>
 
 	<!-- 配置事务平台 -->
 	<bean id="transactionManager"
@@ -19,12 +19,12 @@
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<!-- 传播行为 -->
-			<tx:method name="save*" propagation="REQUIRED" />
-			<tx:method name="insert*" propagation="REQUIRED" />
-			<tx:method name="add*" propagation="REQUIRED" />
-			<tx:method name="create*" propagation="REQUIRED" />
-			<tx:method name="delete*" propagation="REQUIRED" />
-			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="create*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
 			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
 			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />
 			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
@@ -33,9 +33,34 @@
 	<!-- 配置切面  织入 -->
 	<aop:config>
 		<!-- 配置切点 -->
-		<aop:pointcut expression="execution(* cn.e3.manager.service.*.*(..))" id="mypointcut" />
+		<aop:pointcut expression="execution(* com.moudao.service.*.*(..))" id="mypointcut" />
 		<!-- 配置切面 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="mypointcut" />
 	</aop:config>
+
+	<!-- 配置定时任务 -->
+	<bean id = "cleanBottleChanceTask" class="com.moudao.task.CleanBottleChanceTask"></bean>
+	<!-- 配置任务详情 -->
+	<bean id = "cleanChanceDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="cleanBottleChanceTask"></property>
+		<property name="targetMethod" value="cleanBottle"></property>
+		<property name="concurrent" value="false"></property>
+	</bean>
+	<!-- 配置触发器 -->
+	<bean id="cleanChanceTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="cleanChanceDetail"></property>
+		<property name="cronExpression" value="59 59 23 * * ? "></property>
+		<!-- 尽可能到这一天的最后一刻进行清除任务的执行-->
+		<property name="startDelay" value="999"></property>
+	</bean>
+	<!-- 配置调度工长 -->
+	<bean id = "schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cleanChanceTrigger"></ref>
+			</list>
+		</property>
+	</bean>
+
 
 </beans>
